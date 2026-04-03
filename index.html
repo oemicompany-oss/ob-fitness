@@ -2094,6 +2094,13 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 ══════════════════════════════════════════ */
 function handleSubmit(e) {
   e.preventDefault();
+  const name  = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  const msg = `ליד חדש מהאתר 🍑%0A%0A👤 שם: ${encodeURIComponent(name)}%0A📞 טלפון: ${encodeURIComponent(phone)}%0A📧 מייל: ${encodeURIComponent(email)}`;
+  window.open(`https://wa.me/972558813964?text=${msg}`, '_blank');
+
   const btn = document.getElementById('submit-btn');
   btn.textContent = '✅ הפרטים נשלחו! נחזור אלייך בקרוב';
   btn.style.cssText += ';background:linear-gradient(135deg,#2a9d5c,#1e7a47);animation:none;box-shadow:0 6px 20px rgba(42,157,92,0.4);color:#fff';
