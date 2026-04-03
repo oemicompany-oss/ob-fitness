@@ -10,6 +10,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 <script>/* prevent FOUC */(function(){var s=localStorage.getItem('ob-theme');document.documentElement.setAttribute('data-theme',s?s:'light')})()</script>
+<meta property="og:title" content="O.B FITNESS | אוריה בוקובזה – מאמנת כושר אשקלון">
+<meta property="og:description" content="ליווי כושר ותזונה אישי לנשים. מעל 700 נשים שינו את הגוף שלהן.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"O.B FITNESS","description":"ליווי כושר ותזונה אישי לנשים","address":{"@type":"PostalAddress","addressLocality":"אשקלון","addressCountry":"IL"},"telephone":"+972558813964","founder":{"@type":"Person","name":"אוריה בוקובזה","jobTitle":"מאמנת כושר ותזונה"}}
+</script>
 
 <style>
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -136,16 +144,6 @@ button{cursor:pointer;font-family:inherit}
 /* IN – element entering */
 .reveal.in{opacity:1;transform:none!important}
 
-/* OUT – element scrolled above viewport */
-.reveal.out{
-  opacity:0;
-  transform:translateY(-28px)!important;
-  transition-duration:0.55s;
-}
-.reveal.from-left.out {transform:translateX(-28px)!important}
-.reveal.from-right.out{transform:translateX(28px)!important}
-.reveal.scale-in.out  {transform:scale(0.95) translateY(-16px)!important}
-
 /* delays */
 .reveal.delay-1{transition-delay:0.08s}
 .reveal.delay-2{transition-delay:0.16s}
@@ -177,8 +175,6 @@ button{cursor:pointer;font-family:inherit}
 .clip-reveal.in .word:nth-child(8)  em{transition-delay:0.42s}
 .clip-reveal.in .word:nth-child(9)  em{transition-delay:0.48s}
 .clip-reveal.in .word:nth-child(10) em{transition-delay:0.54s}
-.clip-reveal.out .word em{transform:translateY(-110%);transition-duration:0.4s}
-
 /* ── MARQUEE STRIP ── */
 .marquee-strip{
   overflow:hidden;background:rgba(245,166,35,0.08);
@@ -618,7 +614,7 @@ button{cursor:pointer;font-family:inherit}
 .stat-num{font-size:42px;font-weight:900;color:var(--gold);line-height:1;text-shadow:0 0 25px rgba(245,166,35,0.3)}
 .stat-label{font-size:13px;color:var(--text-faint);margin-top:4px}
 
-.about-bio{display:flex;flex-direction:column;gap:18px;margin-top:12px}
+.about-bio{display:flex;flex-direction:column;gap:18px;margin-top:12px;overflow:visible}
 .pullquote{
   margin:24px 0;padding:24px 28px;
   border-right:3px solid var(--gold);
@@ -1017,6 +1013,21 @@ html.a11y-big{font-size:20px!important}
 html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLL TO TOP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#scroll-top{
+  position:fixed;bottom:148px;left:20px;z-index:9998;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(245,166,35,0.15);
+  border:1.5px solid rgba(245,166,35,0.5);
+  color:var(--gold);font-size:20px;
+  display:none;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:background var(--transition),transform var(--transition);
+}
+#scroll-top:hover{background:rgba(245,166,35,0.3);transform:scale(1.1)}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    WHATSAPP FLOAT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .wa-float{
@@ -1053,9 +1064,6 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   body,html{overflow-x:hidden}
   .reveal.from-left,
   .reveal.from-right{transform:translateY(40px)}
-  .reveal.from-left.out,
-  .reveal.from-right.out{transform:translateY(-24px)!important}
-
   /* disable hero parallax on mobile */
   .hero-bg{transform:none!important}
   .ob-logo{transform:none!important;animation:float 5s ease-in-out infinite}
@@ -1290,7 +1298,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   <div class="wrap">
     <div class="process-head reveal">
       <span class="h-md">בואי נדבר ישר תכל׳ס:</span>
-      <span class="h-xl clip-reveal" style="margin-top:4px">מה קורה כשאת נכנסת לתהליך אצלי?</span>
+      <h2 class="h-xl clip-reveal" style="margin-top:4px">מה קורה כשאת נכנסת לתהליך אצלי?</h2>
     </div>
 
     <div class="process-intro reveal delay-1">
@@ -1354,7 +1362,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 <section id="results" class="sec">
   <div class="wrap">
     <div class="results-head reveal">
-      <span class="h-xl clip-reveal">התוצאות מדברות בעד עצמן</span>
+      <h2 class="h-xl clip-reveal">התוצאות מדברות בעד עצמן</h2>
     </div>
   </div>
 
@@ -1392,23 +1400,23 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 <section id="inspo">
   <div class="wrap">
     <div class="inspo-head reveal">
-      <span class="h-md">תרגישי את האנרגיה</span>
+      <h2 class="h-md">תרגישי את האנרגיה</h2>
       <span class="h-xl clip-reveal">זה מה שקורה כאן.</span>
     </div>
     <div class="inspo-grid">
 
       <div class="inspo-card inspo-muted reveal delay-1">
-        <video src="video1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <video src="video1.mp4" autoplay muted loop playsinline preload="none"></video>
         <div class="inspo-sound"></div>
       </div>
 
       <div class="inspo-card inspo-muted reveal delay-2">
-        <video src="video2.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <video src="video2.mp4" autoplay muted loop playsinline preload="none"></video>
         <div class="inspo-sound"></div>
       </div>
 
       <div class="inspo-card inspo-muted reveal delay-3">
-        <video src="video3.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <video src="video3.mp4" autoplay muted loop playsinline preload="none"></video>
         <div class="inspo-sound"></div>
       </div>
 
@@ -1425,7 +1433,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   <div class="wrap">
     <div class="included-head reveal">
       <span class="h-md" style="display:block;margin-bottom:4px">מה כולל</span>
-      <span class="h-xl clip-reveal">הליווי שלנו?</span>
+      <h2 class="h-xl clip-reveal">הליווי שלנו?</h2>
     </div>
 
     <div class="feat-grid">
@@ -1474,7 +1482,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
     <div class="about-wrap">
       <div class="about-text">
         <div class="reveal" style="margin-bottom:32px">
-          <span class="h-xl clip-reveal">ואם במקרה עוד לא הכרנו..</span>
+          <h2 class="h-xl clip-reveal">ואם במקרה עוד לא הכרנו..</h2>
         </div>
 
         <div class="about-bio">
@@ -1532,7 +1540,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 <section id="fitment" class="sec">
   <div class="wrap fit-wrap">
     <div class="fit-head reveal">
-      <span class="h-xl clip-reveal">הליווי שלנו – למי?</span>
+      <h2 class="h-xl clip-reveal">הליווי שלנו – למי?</h2>
     </div>
 
     <div class="fit-cards">
@@ -1570,7 +1578,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   <div class="wrap">
     <div class="method-inner">
       <div class="text-center reveal" style="display:flex;flex-direction:column;gap:6px">
-        <span class="h-xl clip-reveal">האם זה בדיוק מה שחיפשת?</span>
+        <h2 class="h-xl clip-reveal">האם זה בדיוק מה שחיפשת?</h2>
         <span class="h-md">כמו שהבנת – אני אוהבת תכלס.</span>
       </div>
 
@@ -1626,35 +1634,45 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
         <p class="lead-headline reveal delay-1">הגוף שאת רוצה? הביטחון שאת מדמיינת? זה במרחק של החלטה אחת.</p>
         <div class="lead-body reveal delay-2">
           <p>אני והצוות המקצועי שלי כאן בשביל לבנות איתך את זה והרבה מעבר.</p>
-          <p>בלי ניחושים, בלי חוסר הבנות,<br>רק דרך אחת, ברורה ומדויקת – שמובילה לתוצאה.</p>
-          <p>תשאירי פרטים- אנחנו נתקשר.<br>ונצא לדרך שתשנה הכול.</p>
+          <p>בלי ניחושים, בלי חוסר הבנות,<br> רק דרך אחת, ברורה ומדויקת – שמובילה לתוצאה.</p>
+          <p>תשאירי פרטים – אנחנו נתקשר,<br>ונצא לדרך שתשנה הכול.</p>
         </div>
       </div>
 
       <div class="lead-right reveal delay-2">
         <div class="form-hd">
-          <div class="t1">רוצה להתחיל?</div>
+          <h2 class="t1">רוצה להתחיל?</h2>
           <div class="t2">תשאירי פרטים כאן למטה<br>ונצא לדרך שתשנה הכול.</div>
         </div>
 
         <form class="form-fields" id="lead-form" onsubmit="handleSubmit(event)" novalidate>
           <div class="field-row">
             <div class="field-group">
-              <input type="text" id="name" name="name" placeholder="מה השם שלך?" required autocomplete="name">
+              <input type="text" id="name" name="name" aria-label="שם מלא" placeholder="מה השם שלך?" required autocomplete="name">
             </div>
             <div class="field-group">
-              <input type="tel" id="phone" name="phone" placeholder="מה הטלפון שלך?" required autocomplete="tel">
+              <input type="tel" id="phone" name="phone" aria-label="מספר טלפון" placeholder="מה הטלפון שלך?" required autocomplete="tel" pattern="[0-9\-\+\s]{9,15}" minlength="9" maxlength="15">
             </div>
           </div>
           <div class="field-group">
-            <input type="email" id="email" name="email" placeholder="המייל הכי טוב שלך" required autocomplete="email">
+            <input type="email" id="email" name="email" aria-label="כתובת אימייל" placeholder="המייל הכי טוב שלך" required autocomplete="email">
+          </div>
+          <div class="field-group">
+            <select id="goal" name="goal" aria-label="מה היעד שלך?" style="background:#fff;border:1.5px solid var(--gold);border-radius:6px;height:47px;padding:0 14px;font-family:inherit;font-size:15px;color:#111;direction:rtl;width:100%;outline:none;cursor:pointer;">
+              <option value="" disabled selected>מה היעד שלך?</option>
+              <option value="lose">ירידה במשקל</option>
+              <option value="tone">עיצוב ומיצוק</option>
+              <option value="muscle">בניית שריר</option>
+              <option value="health">אורח חיים בריא</option>
+              <option value="other">אחר</option>
+            </select>
           </div>
           <div class="submit-wrap">
             <button type="submit" class="submit-btn" id="submit-btn">אני בפנים!</button>
           </div>
           <label class="field-check">
             <input type="checkbox" required>
-            <span>אני מאשר/ת שקראתי את <a href="#" style="color:var(--gold);text-decoration:underline">מדיניות הפרטיות</a></span>
+            <span>אני מאשר/ת שקראתי את <a href="privacy.html" style="color:var(--gold);text-decoration:underline">מדיניות הפרטיות</a></span>
           </label>
         </form>
       </div>
@@ -1670,7 +1688,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 <section id="faq" class="sec">
   <div class="wrap">
     <div class="faq-head reveal">
-      <span class="h-xl clip-reveal">שאלות שאולי עלו לך</span>
+      <h2 class="h-xl clip-reveal">שאלות שאולי עלו לך</h2>
     </div>
 
     <div class="faq-inner">
@@ -1729,7 +1747,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
       <!-- WhatsApp -->
-      <a class="foot-social-btn" href="https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fy1oizv%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnz72VLakUI6G3L_l-bFIb58Bl7uoeu_w2_Uye2w0z3nckIUxRqK43sOXL3-U_aem_MjNMBvXuNSVyKGZXRx8zVQ&e=AT41sp56RdErjRFwKTb_ilflJj8dGFWIeoq62AxBOTFfC4USFCdHGjbVDqvnSX84Fx4w-hW31fk4M7FIChDii0H-8O0MFd6JzP6aCPfQhUPEIcLSd41uvPUqig" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <a class="foot-social-btn" href="https://wa.link/y1oizv" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </a>
     </div>
@@ -1738,7 +1756,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
     </div>
-    <div class="foot-copy">כל הזכויות שמורות ל-O.B FITNESS 2025©</div>
+    <div class="foot-copy" id="foot-copy">כל הזכויות שמורות ל-O.B FITNESS 2026©</div>
   </div>
 </footer>
 
@@ -1747,8 +1765,11 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   <a href="#lead">הצטרפי עכשיו ← אני בפנים!</a>
 </div>
 
+<!-- SCROLL TO TOP -->
+<button id="scroll-top" aria-label="חזרה למעלה">↑</button>
+
 <!-- WHATSAPP -->
-<a href="https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fy1oizv%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnz72VLakUI6G3L_l-bFIb58Bl7uoeu_w2_Uye2w0z3nckIUxRqK43sOXL3-U_aem_MjNMBvXuNSVyKGZXRx8zVQ&e=AT41sp56RdErjRFwKTb_ilflJj8dGFWIeoq62AxBOTFfC4USFCdHGjbVDqvnSX84Fx4w-hW31fk4M7FIChDii0H-8O0MFd6JzP6aCPfQhUPEIcLSd41uvPUqig" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.link/y1oizv" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -1848,29 +1869,12 @@ const revealEls = Array.from(document.querySelectorAll('.reveal, .clip-reveal'))
 
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    const el  = e.target;
-    const was = el.classList.contains('in');
-
     if (e.isIntersecting) {
-      el.classList.remove('out');
-      el.classList.add('in');
-    } else if (was) {
-      /* only animate OUT if was already in (= scrolled past) */
-      const rect = el.getBoundingClientRect();
-      const goingUp = rect.bottom < 0; /* element exited above */
-      if (goingUp) {
-        el.classList.remove('in');
-        el.classList.add('out');
-      } else {
-        /* element exited below – just reset so it re-animates */
-        el.classList.remove('in','out');
-      }
+      e.target.classList.add('in');
+      revealObs.unobserve(e.target);
     }
   });
-}, {
-  threshold: 0.08,
-  rootMargin: '0px 0px -60px 0px'
-});
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
 revealEls.forEach(el => revealObs.observe(el));
 
@@ -2099,8 +2103,11 @@ function handleSubmit(e) {
   const name  = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
+  const goalEl= document.getElementById('goal');
+  const goalLabels = {lose:'ירידה במשקל',tone:'עיצוב ומיצוק',muscle:'בניית שריר',health:'אורח חיים בריא',other:'אחר'};
+  const goal  = goalEl && goalEl.value ? (goalLabels[goalEl.value] || goalEl.value) : '';
 
-  const msg = `ליד חדש מהאתר 🍑%0A%0A👤 שם: ${encodeURIComponent(name)}%0A📞 טלפון: ${encodeURIComponent(phone)}%0A📧 מייל: ${encodeURIComponent(email)}`;
+  const msg = `ליד חדש מהאתר 🍑%0A%0A👤 שם: ${encodeURIComponent(name)}%0A📞 טלפון: ${encodeURIComponent(phone)}%0A📧 מייל: ${encodeURIComponent(email)}${goal ? `%0A🎯 יעד: ${encodeURIComponent(goal)}` : ''}`;
   window.open(`https://wa.me/972558813964?text=${msg}`, '_blank');
 
   const btn = document.getElementById('submit-btn');
@@ -2143,6 +2150,18 @@ const vidObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.2 });
 document.querySelectorAll('.inspo-card').forEach(c => vidObs.observe(c));
+
+/* ══════════════════════════════════════════
+   SCROLL TO TOP
+══════════════════════════════════════════ */
+(function(){
+  const btn = document.getElementById('scroll-top');
+  if(!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.style.display = window.scrollY > 600 ? 'flex' : 'none';
+  }, {passive:true});
+  btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+})();
 
 /* ══════════════════════════════════════════
    COOKIE CONSENT
