@@ -281,7 +281,7 @@ button{cursor:pointer;font-family:inherit}
   transition:background var(--transition);
 }
 .navbar.scrolled{background:var(--nav-bg-s)}
-.nav-logo{font-size:18px;font-weight:900;letter-spacing:2px;color:var(--gold)}
+.nav-logo{display:flex;align-items:center}
 .nav-links{display:flex;gap:28px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--text-muted);transition:color var(--transition)}
 .nav-links a:hover{color:var(--gold)}
@@ -1191,7 +1191,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   NAVBAR
 ████████████████████████████ -->
 <nav class="navbar" id="navbar">
-  <div class="nav-logo">O.B FITNESS</div>
+  <div class="nav-logo"><img src="logo.png" alt="O.B FITNESS" style="height:42px;width:auto;display:block;"></div>
   <div class="nav-links">
     <a href="#process">הליווי</a>
     <a href="#included">מה כולל</a>
