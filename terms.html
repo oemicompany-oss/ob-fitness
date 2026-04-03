@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תקנון ותנאי שימוש | O.B FITNESS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F5A623;
+    --orange: #E8612D;
+    --bg: #FFF8F0;
+    --bg2: #FFF0DC;
+    --text: #1A0A00;
+    --muted: rgba(26,10,0,0.55);
+    --gold-border: 1px solid rgba(245,166,35,0.5);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans Hebrew', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    direction: rtl;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: #000;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .logo span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(245,166,35,0.7);
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .back-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .back-btn::before {
+    content: '→';
+    font-size: 16px;
+  }
+
+  /* ─── HERO BANNER ─── */
+  .page-hero {
+    background: linear-gradient(135deg, #000 0%, #1a0a00 60%, #2a1200 100%);
+    padding: 56px 24px 48px;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .page-hero .tag {
+    display: inline-block;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.4);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .page-hero p {
+    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  article section {
+    margin-bottom: 48px;
+  }
+
+  article section:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--gold), var(--orange));
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  p {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+  }
+
+  ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: var(--gold-border);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  ul li:last-child { border-bottom: none; }
+
+  ul li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 10px;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .highlight-box {
+    background: var(--bg2);
+    border: var(--gold-border);
+    border-right: 3px solid var(--gold);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 16px 0;
+  }
+
+  .highlight-box p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .warning-box {
+    background: rgba(232,97,45,0.08);
+    border: 1px solid rgba(232,97,45,0.4);
+    border-right: 3px solid var(--orange);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 16px 0;
+  }
+
+  .warning-box p {
+    margin: 0;
+    font-size: 15px;
+    color: #7a2800;
+  }
+
+  .contact-card {
+    background: #000;
+    border: 1px solid rgba(245,166,35,0.4);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .contact-card p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 14px;
+  }
+
+  .contact-card a {
+    display: inline-block;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245,166,35,0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .contact-card a:hover { border-color: var(--gold); }
+
+  .update-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,166,35,0.1);
+    border: var(--gold-border);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+
+  .update-note strong { color: var(--gold); }
+
+  /* ─── TOC ─── */
+  .toc {
+    background: var(--bg2);
+    border: var(--gold-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+
+  .toc h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+    padding: 0;
+    margin: 0;
+    columns: 2;
+    column-gap: 16px;
+  }
+
+  @media (max-width: 500px) {
+    .toc ol { columns: 1; }
+  }
+
+  .toc ol li {
+    counter-increment: toc-counter;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: none;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .toc ol li::before {
+    content: counter(toc-counter) ".";
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 13px;
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  .toc ol li a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .toc ol li a:hover { color: var(--orange); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #000;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 28px 24px;
+    border-top: 1px solid rgba(245,166,35,0.3);
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin-bottom: 14px;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+  .footer-links a[aria-current="page"] { color: var(--gold); font-weight: 600; }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    header { padding: 14px 16px; }
+    .logo { font-size: 18px; }
+    .back-btn { font-size: 13px; padding: 7px 12px; }
+    main { padding: 32px 16px 48px; }
+    .page-hero { padding: 40px 16px 36px; }
+    .section-title { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <a href="index.html" class="logo">
+    O.B FITNESS
+    <span>אוריה בוקובזה</span>
+  </a>
+  <a href="index.html" class="back-btn">חזרה לאתר</a>
+</header>
+
+<!-- ─── HERO ─── -->
+<div class="page-hero">
+  <div class="tag">משפטי</div>
+  <h1>תקנון ותנאי שימוש</h1>
+  <p>אנא קראי את התנאים לפני השימוש באתר ובשירותים</p>
+</div>
+
+<!-- ─── CONTENT ─── -->
+<main>
+  <div class="update-note">
+    <strong>עודכן לאחרונה:</strong> אפריל 2025
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>תוכן עניינים</h3>
+    <ol>
+      <li><a href="#general">כללי</a></li>
+      <li><a href="#service">השירות</a></li>
+      <li><a href="#payments">תשלומים וביטולים</a></li>
+      <li><a href="#ip">קניין רוחני</a></li>
+      <li><a href="#liability">הגבלת אחריות</a></li>
+      <li><a href="#conduct">כללי התנהגות</a></li>
+      <li><a href="#changes">שינויים בתנאים</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ol>
+  </div>
+
+  <article>
+
+    <section id="general">
+      <h2 class="section-title">
+        <span class="icon">📋</span>
+        1. כללי
+      </h2>
+      <p>
+        ברוכה הבאה לאתר O.B FITNESS. האתר מופעל על ידי אוריה בוקובזה, מאמנת כושר ותזונה מוסמכת. השימוש באתר זה מהווה הסכמה מלאה לתנאי השימוש המפורטים להלן.
+      </p>
+      <p>
+        תנאי שימוש אלה חלים על כלל השירותים, הדפים והתכנים המוצגים באתר obfitness.co.il ועל כל שירות הניתן על ידי O.B FITNESS. אם אינך מסכימה לאחד מהתנאים, אנא הימנעי מהשימוש באתר.
+      </p>
+      <div class="highlight-box">
+        <p><strong>גיל מינימלי:</strong> השימוש באתר ובשירותים מותר לבנות 18 ומעלה בלבד. קטינות זקוקות להסכמת הורה או אפוטרופוס.</p>
+      </div>
+    </section>
+
+    <section id="service">
+      <h2 class="section-title">
+        <span class="icon">💪</span>
+        2. השירות
+      </h2>
+      <p>
+        O.B FITNESS מציעה שירותי ליווי כושר ותזונה אישי לנשים, הן באונליין והן באשקלון. השירותים כוללים:
+      </p>
+      <ul>
+        <li>תכניות אימונים מותאמות אישית עם סרטוני הדגמה</li>
+        <li>תפריט תזונה מגוון ומותאם אישית</li>
+        <li>מעקב שוטף אחר התקדמות ופרמטרים גופניים</li>
+        <li>זמינות בוואטסאפ ותקשורת על בסיס יומי</li>
+        <li>ניתוח טכניקת אימונים על בסיס סרטוני ביצוע</li>
+        <li>גישה לחומרי פרימיום ומדריכים</li>
+      </ul>
+      <p style="margin-top: 16px;">
+        O.B FITNESS שומרת לעצמה את הזכות לשנות, להוסיף או להסיר שירותים בכל עת, בהתאם לשיקול דעתה.
+      </p>
+    </section>
+
+    <section id="payments">
+      <h2 class="section-title">
+        <span class="icon">💳</span>
+        3. תשלומים וביטולים
+      </h2>
+      <p>
+        כל התשלומים עבור שירותי O.B FITNESS מתבצעים מראש, לפני תחילת המסלול. התשלום מהווה הסכמה לתנאי השימוש ולמסלול שנבחר.
+      </p>
+      <ul>
+        <li>התשלום מתבצע במלואו לפני תחילת הליווי</li>
+        <li>ניתן לבטל את ההרשמה עד 48 שעות לפני תחילת המסלול לקבלת החזר מלא</li>
+        <li>ביטול לאחר תחילת המסלול לא יזכה בהחזר כספי</li>
+        <li>במקרה של נסיבות חריגות, יש לפנות ישירות לאוריה לבחינת החזר חלקי</li>
+        <li>דחיית מסלול ניתנת לבקשה עד 48 שעות לפני תחילתו, בכפוף לאישור</li>
+      </ul>
+      <div class="warning-box">
+        <p><strong>שים לב:</strong> ביטול לאחר קבלת תכניות האימון והתפריט לא יזכה בהחזר כספי, אף אם טרם החל האימון בפועל.</p>
+      </div>
+    </section>
+
+    <section id="ip">
+      <h2 class="section-title">
+        <span class="icon">©</span>
+        4. קניין רוחני
+      </h2>
+      <p>
+        כל התכנים המופיעים באתר O.B FITNESS – לרבות טקסטים, תמונות, סרטונים, תכניות אימון, תפריטים, מדריכים וכל חומר אחר – הינם רכוש בלעדי של O.B FITNESS ומוגנים על ידי חוקי זכויות יוצרים.
+      </p>
+      <ul>
+        <li>אין להעתיק, להפיץ, לשתף או לפרסם תכנים מהאתר ללא אישור מפורש בכתב</li>
+        <li>אין לעשות שימוש מסחרי בכל תוכן מהאתר</li>
+        <li>שיתוף תכניות אישיות שקיבלת ממאמנת עם גורמים אחרים אסור בהחלט</li>
+        <li>הסמל, הלוגו ושם המותג O.B FITNESS הינם סימנים מסחריים רשומים</li>
+      </ul>
+    </section>
+
+    <section id="liability">
+      <h2 class="section-title">
+        <span class="icon">⚠</span>
+        5. הגבלת אחריות
+      </h2>
+      <p>
+        השירותים המוצעים על ידי O.B FITNESS נועדו לאנשים בריאים המעוניינות בשיפור כושרן ותזונתן. השירות אינו תחליף לייעוץ רפואי, אבחון רפואי או טיפול רפואי מקצועי.
+      </p>
+      <ul>
+        <li>לפני תחילת כל תכנית אימון, מומלץ להתייעץ עם רופא, במיוחד אם קיימות בעיות בריאותיות</li>
+        <li>O.B FITNESS לא תישא באחריות לכל פציעה, נזק לבריאות או תוצאה שלילית הנובעת משימוש בשירות</li>
+        <li>תוצאות הליווי משתנות בין אדם לאדם ואינן מובטחות</li>
+        <li>המשתמשת אחראית לדיוק המידע שהיא מספקת בתהליך ההרשמה</li>
+      </ul>
+      <div class="warning-box">
+        <p><strong>חשוב:</strong> אם את חווה כאב, אי-נוחות חריגה או תסמינים מדאיגים במהלך אימון – הפסיקי מיד ופני לטיפול רפואי.</p>
+      </div>
+    </section>
+
+    <section id="conduct">
+      <h2 class="section-title">
+        <span class="icon">🤝</span>
+        6. כללי התנהגות
+      </h2>
+      <p>
+        אנו מחויבות לסביבה בטוחה, מכבדת ותומכת. כלקוחה, אנו מבקשות לפעול לפי הכללים הבאים:
+      </p>
+      <ul>
+        <li>שמירה על דרך ארץ ויחס מכבד כלפי הצוות והלקוחות האחרות</li>
+        <li>הגשת מידע אמיתי ומדויק בכל שלבי ההרשמה והליווי</li>
+        <li>אי-שיתוף תכנים אישיים שקיבלת עם גורמים אחרים</li>
+        <li>דיווח על כל שינוי בריאותי רלוונטי לצוות</li>
+      </ul>
+      <p style="margin-top: 12px;">
+        O.B FITNESS שומרת לעצמה את הזכות להפסיק שירות ללקוחה שאינה עומדת בכללי ההתנהגות, ללא החזר כספי.
+      </p>
+    </section>
+
+    <section id="changes">
+      <h2 class="section-title">
+        <span class="icon">🔄</span>
+        7. שינויים בתנאים
+      </h2>
+      <p>
+        O.B FITNESS רשאית לשנות את תנאי השימוש בכל עת, לפי שיקול דעתה הבלעדי. שינויים מהותיים יפורסמו באתר ויכנסו לתוקף מיד עם פרסומם.
+      </p>
+      <div class="highlight-box">
+        <p>המשך השימוש באתר לאחר פרסום שינויים מהווה הסכמה לתנאים החדשים. מומלץ לבדוק דף זה מעת לעת.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">
+        <span class="icon">📬</span>
+        8. צור קשר
+      </h2>
+      <p>
+        לכל שאלה, בקשה או פנייה בנוגע לתנאי שימוש אלה, ניתן לפנות אלינו:
+      </p>
+      <div class="contact-card">
+        <p>O.B FITNESS – אוריה בוקובזה</p>
+        <a href="mailto:obfitness@gmail.com">obfitness@gmail.com</a>
+      </div>
+    </section>
+
+  </article>
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <nav class="footer-links" aria-label="קישורי תחתית">
+    <a href="accessibility.html">הצהרת נגישות</a>
+    <a href="terms.html" aria-current="page">תקנון</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+  </nav>
+  <p class="footer-copy">כל הזכויות שמורות ל-O.B FITNESS 2025©</p>
+</footer>
+
+</body>
+</html>
