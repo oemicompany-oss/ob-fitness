@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script>/* prevent FOUC */(function(){var s=localStorage.getItem('ob-theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',(s?s==='dark':p)?'dark':'light')})()</script>
 
 <style>
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -32,48 +31,7 @@
   --radius-card: 18px;
   --radius-btn: 6px;
   --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
-  /* theme-sensitive */
-  --nav-bg: rgba(255,248,240,0.92);
-  --nav-bg-s: rgba(255,248,240,0.98);
-  --card-bg: rgba(255,255,255,0.6);
-  --fit-card-bg: rgba(255,255,255,0.75);
-  --arrow-bg: rgba(255,255,255,0.85);
-  --text-muted: rgba(26,10,0,0.55);
-  --text-faint: rgba(26,10,0,0.50);
-  --text-faintest: rgba(26,10,0,0.40);
-  --v-card-bg: linear-gradient(160deg,#fff5e8,#ffe8cc);
-  --v-thumb-bg: linear-gradient(145deg,#ffe0b2,#ffcc80);
 }
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   DARK MODE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-[data-theme="dark"] {
-  --bg: #000000;
-  --bg2: #0a0a0a;
-  --bg3: #111111;
-  --text: #FFFFFF;
-  --muted: rgba(255,255,255,0.5);
-  --gold-glow: rgba(245,166,35,0.20);
-  --nav-bg: rgba(0,0,0,0.92);
-  --nav-bg-s: rgba(0,0,0,0.98);
-  --card-bg: rgba(255,255,255,0.05);
-  --fit-card-bg: rgba(255,255,255,0.05);
-  --arrow-bg: rgba(30,20,0,0.85);
-  --text-muted: rgba(255,255,255,0.55);
-  --text-faint: rgba(255,255,255,0.50);
-  --text-faintest: rgba(255,255,255,0.40);
-  --v-card-bg: linear-gradient(160deg,#130c00,#1a1000);
-  --v-thumb-bg: linear-gradient(145deg,#1a0e00,#2a1800);
-}
-[data-theme="dark"] .hero-bg{
-  background:radial-gradient(ellipse at 50% 40%, rgba(245,166,35,0.10) 0%, transparent 65%), #000000;
-}
-[data-theme="dark"] .portrait-inner{background:linear-gradient(145deg,#1a0e00,#2a1800)}
-[data-theme="dark"] .spl-label{background:rgba(0,0,0,0.75)}
-[data-theme="dark"] .spl-dot{background:rgba(255,255,255,0.15)}
-[data-theme="dark"] .spl-progress{background:rgba(255,255,255,0.08)}
-[data-theme="dark"] .spl-arrow{background:var(--arrow-bg);border-color:rgba(245,166,35,0.4)}
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
@@ -84,21 +42,7 @@ body{
   direction:rtl;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
-  transition:background 0.35s ease, color 0.35s ease;
 }
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   THEME TOGGLE BUTTON
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.theme-toggle{
-  width:36px;height:36px;border-radius:50%;
-  background:transparent;border:1.5px solid rgba(245,166,35,0.5);
-  color:var(--gold);font-size:16px;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;flex-shrink:0;
-  transition:background var(--transition),transform var(--transition),border-color var(--transition);
-}
-.theme-toggle:hover{background:rgba(245,166,35,0.12);transform:scale(1.1);border-color:var(--gold)}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit}
@@ -210,7 +154,7 @@ button{cursor:pointer;font-family:inherit}
 .h-md{font-size:clamp(20px,2.5vw,28px);font-weight:700;line-height:1.3;color:var(--gold)}
 .h-sm{font-size:clamp(17px,2vw,22px);font-weight:700;color:var(--gold)}
 .body-txt{font-size:19px;font-weight:300;line-height:1.65;color:var(--text)}
-.body-txt.muted{color:var(--text-muted)}
+.body-txt.muted{color:rgba(26,10,0,0.55)}
 .text-center{text-align:center}
 .text-gold{color:var(--gold)}
 .text-orange{color:var(--orange)}
@@ -274,16 +218,16 @@ button{cursor:pointer;font-family:inherit}
 .navbar{
   position:fixed;top:0;right:0;left:0;z-index:1000;
   padding:14px 20px;
-  background:var(--nav-bg);
+  background:rgba(255,248,240,0.92);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(245,166,35,0.2);
   display:flex;align-items:center;justify-content:space-between;
   transition:background var(--transition);
 }
-.navbar.scrolled{background:var(--nav-bg-s)}
+.navbar.scrolled{background:rgba(255,248,240,0.98)}
 .nav-logo{font-size:18px;font-weight:900;letter-spacing:2px;color:var(--gold)}
 .nav-links{display:flex;gap:28px}
-.nav-links a{font-size:14px;font-weight:500;color:var(--text-muted);transition:color var(--transition)}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(26,10,0,0.55);transition:color var(--transition)}
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{display:block}
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
@@ -302,7 +246,7 @@ button{cursor:pointer;font-family:inherit}
 .hero-bg{
   position:absolute;inset:0;
   background:radial-gradient(ellipse at 50% 40%, rgba(245,166,35,0.12) 0%, transparent 65%),
-             var(--bg);
+             #FFF8F0;
 }
 .hero-bg::before{
   content:'';position:absolute;inset:0;
@@ -448,7 +392,7 @@ button{cursor:pointer;font-family:inherit}
 .spl-slide.active .spl-overlay{opacity:1}
 .spl-label{
   font-size:12px;font-weight:700;letter-spacing:2px;
-  color:var(--gold);background:var(--arrow-bg);
+  color:var(--gold);background:rgba(255,255,255,0.85);
   padding:6px 16px;border-radius:20px;
   border:1px solid rgba(245,166,35,0.5);
 }
@@ -456,7 +400,7 @@ button{cursor:pointer;font-family:inherit}
 .spl-arrow{
   position:absolute;top:50%;transform:translateY(-60%);
   width:52px;height:52px;border-radius:50%;
-  background:var(--arrow-bg);backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);
   border:1.5px solid rgba(245,166,35,0.5);
   color:var(--gold);font-size:20px;
   display:flex;align-items:center;justify-content:center;
@@ -545,7 +489,7 @@ button{cursor:pointer;font-family:inherit}
   position:relative;
   min-height:210px;
   display:flex;flex-direction:column;gap:12px;
-  background:var(--card-bg);
+  background:rgba(255,255,255,0.6);
   transition:transform var(--transition),box-shadow var(--transition);
 }
 .feat-card:hover{
@@ -598,7 +542,7 @@ button{cursor:pointer;font-family:inherit}
 .portrait-inner{
   position:relative;z-index:1;
   width:290px;height:290px;border-radius:50%;
-  background:var(--v-thumb-bg);
+  background:linear-gradient(145deg,#ffe0b2,#ffcc80);
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
   font-size:80px;
@@ -614,7 +558,7 @@ button{cursor:pointer;font-family:inherit}
 .stats-row{display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
 .stat-item{text-align:center}
 .stat-num{font-size:42px;font-weight:900;color:var(--gold);line-height:1;text-shadow:0 0 25px rgba(245,166,35,0.3)}
-.stat-label{font-size:13px;color:var(--text-faint);margin-top:4px}
+.stat-label{font-size:13px;color:rgba(26,10,0,0.5);margin-top:4px}
 
 .about-bio{display:flex;flex-direction:column;gap:18px;margin-top:12px}
 .pullquote{
@@ -642,7 +586,7 @@ button{cursor:pointer;font-family:inherit}
 .fit-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .fit-card{
   border:var(--gold-border);border-radius:24px;
-  background:var(--fit-card-bg);
+  background:rgba(255,255,255,0.75);
   padding:36px 32px;
   backdrop-filter:blur(6px);
   transition:transform var(--transition),box-shadow var(--transition);
@@ -671,7 +615,7 @@ button{cursor:pointer;font-family:inherit}
 }
 .stat-band-item:last-child{border-left:none}
 .stat-band-item .num{font-size:44px;font-weight:900;color:var(--gold);text-shadow:0 0 25px rgba(245,166,35,0.3)}
-.stat-band-item .lbl{font-size:13px;color:var(--text-faint);margin-top:6px}
+.stat-band-item .lbl{font-size:13px;color:rgba(26,10,0,0.5);margin-top:6px}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    VIDEO TESTIMONIALS
@@ -680,7 +624,7 @@ button{cursor:pointer;font-family:inherit}
 .testi-head{text-align:center;margin-bottom:48px}
 .v-card{
   flex-shrink:0;width:240px;
-  background:var(--v-card-bg);
+  background:linear-gradient(160deg,#fff5e8,#ffe8cc);
   border-radius:var(--radius-card);
   border:1px solid rgba(245,166,35,0.35);
   overflow:hidden;
@@ -690,7 +634,7 @@ button{cursor:pointer;font-family:inherit}
 .v-card:hover{transform:translateY(-8px);border-color:var(--gold)}
 .v-thumb{
   width:100%;height:420px;
-  background:var(--v-thumb-bg);
+  background:linear-gradient(145deg,#ffe0b2,#ffcc80);
   display:flex;align-items:center;justify-content:center;
   position:relative;
 }
@@ -733,7 +677,7 @@ button{cursor:pointer;font-family:inherit}
 .faq-item.open .faq-a{max-height:500px}
 .faq-a-body{
   padding:0 0 22px;
-  font-size:16px;font-weight:300;line-height:1.7;color:var(--text-muted);
+  font-size:16px;font-weight:300;line-height:1.7;color:rgba(26,10,0,0.65);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -805,64 +749,6 @@ button{cursor:pointer;font-family:inherit}
 .submit-btn:hover{transform:scale(1.03);filter:brightness(1.08)}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   INSPIRATION VIDEOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#inspo{background:#0a0a0a;padding:90px 0 100px}
-.inspo-head{text-align:center;margin-bottom:56px}
-.inspo-head .h-md{display:block;margin-bottom:6px}
-.inspo-grid{
-  display:flex;gap:24px;justify-content:center;align-items:flex-start;
-  flex-wrap:nowrap;
-}
-.inspo-card{
-  flex:0 0 calc(33.333% - 16px);max-width:320px;
-  border-radius:22px;overflow:hidden;
-  border:1.5px solid rgba(245,166,35,0.55);
-  box-shadow:0 0 40px 6px rgba(245,166,35,0.08) inset,
-             0 8px 40px rgba(0,0,0,0.5);
-  position:relative;cursor:pointer;
-  background:#111;
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-}
-.inspo-card:hover{
-  transform:translateY(-6px) scale(1.02);
-  box-shadow:0 0 60px 10px rgba(245,166,35,0.18) inset,
-             0 16px 56px rgba(0,0,0,0.6);
-  border-color:var(--gold);
-}
-.inspo-card video{
-  width:100%;display:block;
-  aspect-ratio:9/16;object-fit:cover;
-  border-radius:0;
-}
-.inspo-sound{
-  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
-  background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);
-  border:1px solid rgba(245,166,35,0.5);border-radius:20px;
-  color:#fff;font-size:12px;font-weight:600;letter-spacing:1px;
-  padding:6px 14px;pointer-events:none;
-  opacity:0;transition:opacity 0.3s;
-}
-.inspo-card:hover .inspo-sound{opacity:1}
-.inspo-muted .inspo-sound::before{content:"🔇 "}
-.inspo-card:not(.inspo-muted) .inspo-sound::before{content:"🔊 "}
-.inspo-muted .inspo-sound::after{content:"להפעיל שמע"}
-.inspo-card:not(.inspo-muted) .inspo-sound::after{content:"השתקה"}
-
-@media(max-width:900px){
-  .inspo-grid{gap:16px}
-  .inspo-card{flex:0 0 calc(50% - 8px);max-width:280px}
-}
-@media(max-width:600px){
-  .inspo-grid{
-    flex-direction:column;align-items:center;gap:20px;
-    padding:0 16px;
-  }
-  .inspo-card{flex:0 0 auto;width:100%;max-width:340px}
-  .inspo-card video{aspect-ratio:9/16}
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    FOOTER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 footer{
@@ -872,23 +758,13 @@ footer{
 }
 .foot-inner{
   max-width:1140px;margin:0 auto;
-  display:flex;flex-direction:column;align-items:center;gap:20px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
 }
-.foot-socials{display:flex;gap:18px;align-items:center}
-.foot-social-btn{
-  display:flex;align-items:center;justify-content:center;
-  width:46px;height:46px;border-radius:50%;
-  border:1.5px solid rgba(245,166,35,0.5);
-  color:var(--gold);font-size:22px;
-  transition:transform 0.25s,border-color 0.25s,background 0.25s;
-  background:transparent;
-}
-.foot-social-btn:hover{transform:scale(1.12);background:rgba(245,166,35,0.1);border-color:var(--gold)}
-.foot-social-btn svg{width:22px;height:22px;fill:currentColor}
-.foot-links{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
-.foot-links a{font-size:13px;color:var(--text-faint);transition:color var(--transition)}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap}
+.foot-links a{font-size:13px;color:rgba(26,10,0,0.45);transition:color var(--transition)}
 .foot-links a:hover{color:var(--gold)}
-.foot-copy{font-size:13px;color:var(--text-faintest)}
+.foot-copy{font-size:13px;color:rgba(26,10,0,0.4)}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    STICKY CTA BAR
@@ -917,7 +793,7 @@ footer{
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .mobile-nav{
   display:none;position:fixed;inset:0;z-index:999;
-  background:var(--nav-bg-s);
+  background:rgba(255,248,240,0.98);
   flex-direction:column;align-items:center;justify-content:center;gap:32px;
   opacity:0;pointer-events:none;transition:opacity var(--transition);
 }
@@ -930,91 +806,6 @@ footer{
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   COOKIE CONSENT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.cookie-bar{
-  position:fixed;bottom:0;left:0;right:0;z-index:99999;
-  background:#1a1a1a;border-top:2px solid var(--gold);
-  padding:16px 24px;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:14px;
-  transform:translateY(100%);transition:transform 0.4s ease;
-}
-.cookie-bar.show{transform:translateY(0)}
-.cookie-text{font-size:14px;color:#eee;line-height:1.5;flex:1;min-width:200px}
-.cookie-text a{color:var(--gold);text-decoration:underline}
-.cookie-btns{display:flex;gap:10px;flex-shrink:0}
-.cookie-accept{
-  background:linear-gradient(135deg,#F5A623,#E8612D);
-  color:#fff;border:none;border-radius:6px;
-  padding:9px 22px;font-size:14px;font-weight:700;
-  font-family:inherit;cursor:pointer;transition:opacity 0.2s;
-}
-.cookie-accept:hover{opacity:0.88}
-.cookie-decline{
-  background:transparent;border:1px solid rgba(255,255,255,0.25);
-  color:#aaa;border-radius:6px;
-  padding:9px 16px;font-size:14px;font-family:inherit;cursor:pointer;
-  transition:border-color 0.2s,color 0.2s;
-}
-.cookie-decline:hover{border-color:#fff;color:#fff}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ACCESSIBILITY WIDGET
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.a11y-toggle{
-  position:fixed;top:50%;left:0;transform:translateY(-50%);
-  z-index:9997;
-  background:var(--gold);color:#fff;
-  border:none;border-radius:0 8px 8px 0;
-  width:38px;height:100px;
-  font-size:20px;cursor:pointer;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  box-shadow:2px 0 12px rgba(245,166,35,0.4);
-  transition:width 0.2s,background 0.2s;
-  writing-mode:vertical-rl;
-}
-.a11y-toggle:hover{width:44px;background:var(--gold-dark,#E8962A)}
-.a11y-toggle span{font-size:10px;font-weight:700;letter-spacing:1px;writing-mode:vertical-rl;font-family:'Noto Sans Hebrew',sans-serif}
-
-.a11y-panel{
-  position:fixed;top:50%;left:0;transform:translateY(-50%) translateX(-110%);
-  z-index:9996;
-  background:#1a1a1a;border:1.5px solid var(--gold);border-radius:0 16px 16px 0;
-  padding:20px 16px;width:200px;
-  transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
-  box-shadow:4px 0 24px rgba(0,0,0,0.5);
-}
-.a11y-panel.open{transform:translateY(-50%) translateX(0)}
-.a11y-panel h3{color:var(--gold);font-size:14px;font-weight:700;margin-bottom:14px;text-align:center}
-.a11y-btn{
-  display:flex;align-items:center;gap:8px;width:100%;
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
-  border-radius:8px;padding:8px 12px;margin-bottom:8px;
-  color:#eee;font-size:13px;font-family:inherit;cursor:pointer;
-  transition:background 0.2s,border-color 0.2s;text-align:right;
-}
-.a11y-btn:hover,.a11y-btn.active{background:rgba(245,166,35,0.18);border-color:var(--gold);color:var(--gold)}
-.a11y-btn .a11y-icon{font-size:16px;flex-shrink:0}
-.a11y-reset{
-  width:100%;margin-top:4px;background:transparent;
-  border:1px solid rgba(232,97,45,0.5);border-radius:8px;
-  padding:7px;color:#E8612D;font-size:12px;font-family:inherit;cursor:pointer;
-  transition:background 0.2s,border-color 0.2s;
-}
-.a11y-reset:hover{background:rgba(232,97,45,0.15);border-color:#E8612D}
-
-/* a11y active states
-   Filters go on <html> (not body) so position:fixed children
-   keep their viewport-relative position and stay visible */
-html.a11y-contrast{filter:contrast(1.6) saturate(0.6)}
-html.a11y-gray{filter:grayscale(1)}
-html.a11y-links a{text-decoration:underline!important;text-underline-offset:3px}
-html.a11y-spacing *{letter-spacing:0.08em!important;word-spacing:0.12em!important;line-height:1.8!important}
-html.a11y-big{font-size:20px!important}
-html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    WHATSAPP FLOAT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .wa-float{
@@ -1024,8 +815,8 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 16px rgba(37,211,102,0.5);
   transition:transform var(--transition),box-shadow var(--transition);
+  font-size:26px;
 }
-.wa-float svg{width:30px;height:30px;fill:#fff}
 .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 24px rgba(37,211,102,0.7)}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1199,7 +990,6 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
     <a href="#faq">שאלות</a>
   </div>
   <a href="#lead" class="btn btn-gold nav-cta" style="font-size:14px;padding:10px 22px;color:#000">אני בפנים!</a>
-  <button class="theme-toggle" id="theme-toggle" aria-label="מצב כהה/בהיר" title="מצב כהה/בהיר">🌙</button>
   <button class="nav-burger" id="burger" aria-label="תפריט">
     <span></span><span></span><span></span>
   </button>
@@ -1375,36 +1165,6 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
     <button class="lb-arrow lb-lprev" id="lb-prev">&#8594;</button>
     <img id="lb-img" src="" alt="">
     <button class="lb-arrow lb-lnext" id="lb-next">&#8592;</button>
-  </div>
-</section>
-
-<!-- ████████████████████████████
-  INSPIRATION VIDEOS
-████████████████████████████ -->
-<section id="inspo">
-  <div class="wrap">
-    <div class="inspo-head reveal">
-      <span class="h-md">תרגישי את האנרגיה</span>
-      <span class="h-xl clip-reveal">זה מה שקורה כאן.</span>
-    </div>
-    <div class="inspo-grid">
-
-      <div class="inspo-card inspo-muted reveal delay-1">
-        <video src="video1.mp4" autoplay muted loop playsinline preload="metadata"></video>
-        <div class="inspo-sound"></div>
-      </div>
-
-      <div class="inspo-card inspo-muted reveal delay-2">
-        <video src="video2.mp4" autoplay muted loop playsinline preload="metadata"></video>
-        <div class="inspo-sound"></div>
-      </div>
-
-      <div class="inspo-card inspo-muted reveal delay-3">
-        <video src="video3.mp4" autoplay muted loop playsinline preload="metadata"></video>
-        <div class="inspo-sound"></div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -1607,49 +1367,47 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- ████████████████████████████
-  LEAD FORM
+  VIDEO TESTIMONIALS
 ████████████████████████████ -->
-<section id="lead" class="sec">
+<section id="testimonials" class="sec">
   <div class="wrap">
-    <p class="lead-section-title reveal">לא במקרה הגעת עד לכאן..</p>
-    <div class="lead-wrap">
-      <div class="lead-left">
-        <p class="lead-headline reveal delay-1">הגוף שאת רוצה? הביטחון שאת מדמיינת? זה במרחק של החלטה אחת.</p>
-        <div class="lead-body reveal delay-2">
-          <p>אני והצוות המקצועי שלי כאן בשביל לבנות איתך את זה והרבה מעבר.</p>
-          <p>בלי ניחושים, בלי חוסר הבנות,<br>רק דרך אחת, ברורה ומדויקת – שמובילה לתוצאה.</p>
-          <p>תשאירי פרטים- אנחנו נתקשר.<br>ונצא לדרך שתשנה הכול.</p>
+    <div class="testi-head reveal">
+      <span class="h-md" style="display:block;margin-bottom:4px;font-weight:400">הן נכנסו לתהליך</span>
+      <span class="h-xl clip-reveal">ויצאו חדשות.</span>
+    </div>
+  </div>
+
+  <div class="carousel-outer">
+    <div class="c-track-wrap" id="vid-wrap">
+      <div class="c-track" id="vid-track">
+        <div class="v-card reveal delay-1">
+          <div class="v-thumb"><div class="v-play">▶</div></div>
+          <div class="v-name">מיכל – ירדה 12 ק"ג ב-4 חודשים</div>
+        </div>
+        <div class="v-card reveal delay-2">
+          <div class="v-thumb"><div class="v-play">▶</div></div>
+          <div class="v-name">שירה – שינוי פרופורציות מלא</div>
+        </div>
+        <div class="v-card reveal delay-3">
+          <div class="v-thumb"><div class="v-play">▶</div></div>
+          <div class="v-name">נעמה – אחרי לידה, תוצאות מדהימות</div>
+        </div>
+        <div class="v-card reveal delay-4">
+          <div class="v-thumb"><div class="v-play">▶</div></div>
+          <div class="v-name">ליאת – מ-0 לתחרות</div>
+        </div>
+        <div class="v-card reveal delay-5">
+          <div class="v-thumb"><div class="v-play">▶</div></div>
+          <div class="v-name">אורית – בניית מסת שריר נשי</div>
         </div>
       </div>
-
-      <div class="lead-right reveal delay-2">
-        <div class="form-hd">
-          <div class="t1">רוצה להתחיל?</div>
-          <div class="t2">תשאירי פרטים כאן למטה<br>ונצא לדרך שתשנה הכול.</div>
-        </div>
-
-        <form class="form-fields" id="lead-form" onsubmit="handleSubmit(event)" novalidate>
-          <div class="field-row">
-            <div class="field-group">
-              <input type="text" id="name" name="name" placeholder="מה השם שלך?" required autocomplete="name">
-            </div>
-            <div class="field-group">
-              <input type="tel" id="phone" name="phone" placeholder="מה הטלפון שלך?" required autocomplete="tel">
-            </div>
-          </div>
-          <div class="field-group">
-            <input type="email" id="email" name="email" placeholder="המייל הכי טוב שלך" required autocomplete="email">
-          </div>
-          <div class="submit-wrap">
-            <button type="submit" class="submit-btn" id="submit-btn">אני בפנים!</button>
-          </div>
-          <label class="field-check">
-            <input type="checkbox" required>
-            <span>אני מאשר/ת שקראתי את <a href="#" style="color:var(--gold);text-decoration:underline">מדיניות הפרטיות</a></span>
-          </label>
-        </form>
-      </div>
+    </div>
+    <div class="c-btns">
+      <button class="c-btn" id="vid-prev" aria-label="הקודם">&#8594;</button>
+      <button class="c-btn" id="vid-next" aria-label="הבא">&#8592;</button>
     </div>
   </div>
 </section>
@@ -1710,25 +1468,64 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- ████████████████████████████
+  LEAD FORM
+████████████████████████████ -->
+<section id="lead" class="sec">
+  <div class="wrap">
+    <p class="lead-section-title reveal">לא במקרה הגעת עד לכאן..</p>
+    <div class="lead-wrap">
+      <div class="lead-left">
+        <p class="lead-headline reveal delay-1">הגוף שאת רוצה? הביטחון שאת מדמיינת? זה במרחק של החלטה אחת.</p>
+        <div class="lead-body reveal delay-2">
+          <p>אני והצוות המקצועי שלי כאן בשביל לבנות איתך את זה והרבה מעבר.</p>
+          <p>בלי ניחושים, בלי חוסר הבנות,<br>רק דרך אחת, ברורה ומדויקת – שמובילה לתוצאה.</p>
+          <p>תשאירי פרטים- אנחנו נתקשר.<br>ונצא לדרך שתשנה הכול.</p>
+        </div>
+      </div>
+
+      <div class="lead-right reveal delay-2">
+        <div class="form-hd">
+          <div class="t1">רוצה להתחיל?</div>
+          <div class="t2">תשאירי פרטים כאן למטה<br>ונצא לדרך שתשנה הכול.</div>
+        </div>
+
+        <form class="form-fields" id="lead-form" onsubmit="handleSubmit(event)" novalidate>
+          <div class="field-row">
+            <div class="field-group">
+              <input type="text" id="name" name="name" placeholder="מה השם שלך?" required autocomplete="name">
+            </div>
+            <div class="field-group">
+              <input type="tel" id="phone" name="phone" placeholder="מה הטלפון שלך?" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="field-group">
+            <input type="email" id="email" name="email" placeholder="המייל הכי טוב שלך" required autocomplete="email">
+          </div>
+          <div class="submit-wrap">
+            <button type="submit" class="submit-btn" id="submit-btn">אני בפנים!</button>
+          </div>
+          <label class="field-check">
+            <input type="checkbox" required>
+            <span>אני מאשר/ת שקראתי את <a href="#" style="color:var(--gold);text-decoration:underline">מדיניות הפרטיות</a></span>
+          </label>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ████████████████████████████
   FOOTER
 ████████████████████████████ -->
 <footer>
   <div class="foot-inner">
-    <div class="foot-socials">
-      <!-- Instagram -->
-      <a class="foot-social-btn" href="https://www.instagram.com/o.b_fit/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <!-- WhatsApp -->
-      <a class="foot-social-btn" href="https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fy1oizv%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnz72VLakUI6G3L_l-bFIb58Bl7uoeu_w2_Uye2w0z3nckIUxRqK43sOXL3-U_aem_MjNMBvXuNSVyKGZXRx8zVQ&e=AT41sp56RdErjRFwKTb_ilflJj8dGFWIeoq62AxBOTFfC4USFCdHGjbVDqvnSX84Fx4w-hW31fk4M7FIChDii0H-8O0MFd6JzP6aCPfQhUPEIcLSd41uvPUqig" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
-    </div>
     <div class="foot-links">
-      <a href="accessibility.html">הצהרת נגישות</a>
-      <a href="terms.html">תקנון</a>
-      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="#">הצהרת נגישות</a>
+      <a href="#">תקנון</a>
+      <a href="#">מדיניות פרטיות</a>
     </div>
     <div class="foot-copy">כל הזכויות שמורות ל-O.B FITNESS 2025©</div>
   </div>
@@ -1740,58 +1537,12 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 </div>
 
 <!-- WHATSAPP -->
-<a href="https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2Fy1oizv%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnz72VLakUI6G3L_l-bFIb58Bl7uoeu_w2_Uye2w0z3nckIUxRqK43sOXL3-U_aem_MjNMBvXuNSVyKGZXRx8zVQ&e=AT41sp56RdErjRFwKTb_ilflJj8dGFWIeoq62AxBOTFfC4USFCdHGjbVDqvnSX84Fx4w-hW31fk4M7FIChDii0H-8O0MFd6JzP6aCPfQhUPEIcLSd41uvPUqig" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- COOKIE CONSENT -->
-<div class="cookie-bar" id="cookie-bar" role="dialog" aria-label="הסכמה לעוגיות">
-  <p class="cookie-text">
-    אנו משתמשים בעוגיות לשיפור חוויית הגלישה שלך. המשך שימוש באתר מהווה הסכמה למדיניות העוגיות שלנו.
-    <a href="privacy.html">למדיניות הפרטיות</a>
-  </p>
-  <div class="cookie-btns">
-    <button class="cookie-accept" id="cookie-accept">אני מסכימה</button>
-    <button class="cookie-decline" id="cookie-decline">דחה</button>
-  </div>
-</div>
-
-<!-- ACCESSIBILITY WIDGET -->
-<button class="a11y-toggle" id="a11y-toggle" aria-label="פתח תפריט נגישות" aria-expanded="false">
-  ♿<span>נגישות</span>
-</button>
-<div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="כלי נגישות">
-  <h3>♿ נגישות</h3>
-  <button class="a11y-btn" data-action="big" aria-pressed="false"><span class="a11y-icon">A+</span> הגדל טקסט</button>
-  <button class="a11y-btn" data-action="contrast" aria-pressed="false"><span class="a11y-icon">◑</span> ניגודיות גבוהה</button>
-  <button class="a11y-btn" data-action="gray" aria-pressed="false"><span class="a11y-icon">◐</span> גווני אפור</button>
-  <button class="a11y-btn" data-action="links" aria-pressed="false"><span class="a11y-icon">🔗</span> הדגש קישורים</button>
-  <button class="a11y-btn" data-action="spacing" aria-pressed="false"><span class="a11y-icon">↔</span> ריווח מוגדל</button>
-  <button class="a11y-reset" id="a11y-reset">↺ איפוס</button>
-</div>
+<a href="https://wa.me/972500000000" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 <!-- ████████████████████████████
   JAVASCRIPT
 ████████████████████████████ -->
 <script>
-/* ══════════════════════════════════════════
-   THEME TOGGLE
-══════════════════════════════════════════ */
-(function(){
-  const root = document.documentElement;
-  const btn  = document.getElementById('theme-toggle');
-  const updateIcon = () => {
-    btn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
-  };
-  updateIcon();
-  btn.addEventListener('click', () => {
-    const dark = root.getAttribute('data-theme') !== 'dark';
-    root.setAttribute('data-theme', dark ? 'dark' : 'light');
-    localStorage.setItem('ob-theme', dark ? 'dark' : 'light');
-    updateIcon();
-  });
-})();
-
 /* ══════════════════════════════════════════
    NAVBAR
 ══════════════════════════════════════════ */
@@ -2107,86 +1858,6 @@ document.querySelectorAll('.feat-card').forEach((c, i) => {
 document.querySelectorAll('.clip-reveal').forEach(el => {
   revealObs.observe(el);
 });
-
-/* ══════════════════════════════════════════
-   INSPO VIDEOS – click to toggle sound
-══════════════════════════════════════════ */
-document.querySelectorAll('.inspo-card').forEach(card => {
-  const vid = card.querySelector('video');
-  card.addEventListener('click', () => {
-    vid.muted = !vid.muted;
-    card.classList.toggle('inspo-muted', vid.muted);
-  });
-});
-
-/* pause inspo videos when out of view */
-const vidObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    const vid = e.target.querySelector('video');
-    if (!vid) return;
-    e.isIntersecting ? vid.play() : vid.pause();
-  });
-}, { threshold: 0.2 });
-document.querySelectorAll('.inspo-card').forEach(c => vidObs.observe(c));
-
-/* ══════════════════════════════════════════
-   COOKIE CONSENT
-══════════════════════════════════════════ */
-(function(){
-  const bar = document.getElementById('cookie-bar');
-  if(localStorage.getItem('ob_cookies')) return;
-  setTimeout(() => bar.classList.add('show'), 1200);
-  document.getElementById('cookie-accept').addEventListener('click', () => {
-    localStorage.setItem('ob_cookies','accepted');
-    bar.classList.remove('show');
-  });
-  document.getElementById('cookie-decline').addEventListener('click', () => {
-    localStorage.setItem('ob_cookies','declined');
-    bar.classList.remove('show');
-  });
-})();
-
-/* ══════════════════════════════════════════
-   ACCESSIBILITY WIDGET
-══════════════════════════════════════════ */
-(function(){
-  const toggle = document.getElementById('a11y-toggle');
-  const panel  = document.getElementById('a11y-panel');
-  const reset  = document.getElementById('a11y-reset');
-  const cls    = { big:'a11y-big', contrast:'a11y-contrast', gray:'a11y-gray', links:'a11y-links', spacing:'a11y-spacing' };
-
-  /* restore saved prefs */
-  const saved = JSON.parse(localStorage.getItem('ob_a11y')||'{}');
-  Object.entries(saved).forEach(([k,v]) => { if(v) document.documentElement.classList.add(cls[k]); });
-
-  toggle.addEventListener('click', () => {
-    const open = panel.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
-  });
-
-  document.querySelectorAll('.a11y-btn[data-action]').forEach(btn => {
-    const action = btn.dataset.action;
-    if(saved[action]) btn.classList.add('active');
-    btn.addEventListener('click', () => {
-      const on = document.documentElement.classList.toggle(cls[action]);
-      btn.classList.toggle('active', on);
-      btn.setAttribute('aria-pressed', on);
-      saved[action] = on;
-      localStorage.setItem('ob_a11y', JSON.stringify(saved));
-    });
-  });
-
-  reset.addEventListener('click', () => {
-    Object.values(cls).forEach(c => document.documentElement.classList.remove(c));
-    document.querySelectorAll('.a11y-btn[data-action]').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-    localStorage.removeItem('ob_a11y');
-  });
-
-  /* close panel on outside click */
-  document.addEventListener('click', e => {
-    if(!panel.contains(e.target) && e.target !== toggle) panel.classList.remove('open');
-  });
-})();
 </script>
 </body>
 </html>
