@@ -569,6 +569,47 @@ button{cursor:pointer;font-family:inherit}
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROGRAM SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.program-sec{padding:80px 0}
+.program-head{text-align:center;margin-bottom:56px}
+.program-container{
+  max-width:700px;
+  margin:0 auto;
+  display:flex;flex-direction:column;gap:16px;
+}
+.program-item{
+  display:flex;align-items:center;gap:18px;
+  background:var(--card-bg);
+  border:var(--gold-border);
+  border-radius:var(--radius-card);
+  padding:22px 28px;
+  box-shadow:var(--card-inset);
+  transition:transform var(--transition),box-shadow var(--transition);
+}
+.program-item:hover{
+  transform:translateX(-6px);
+  box-shadow:rgba(245,166,35,0.2) 0 0 55px 18px inset, 0 8px 28px rgba(245,166,35,0.1);
+}
+.program-icon{
+  width:48px;height:48px;min-width:48px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--orange));
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+  box-shadow:0 0 16px rgba(245,166,35,0.35);
+}
+.program-item p{
+  font-size:17px;font-weight:600;line-height:1.5;
+  color:var(--text);
+}
+.program-item p span{
+  display:block;font-size:13px;font-weight:400;
+  color:var(--text-muted);margin-top:2px;
+}
+.program-cta{text-align:center;margin-top:44px}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ABOUT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 #about{background:var(--bg2)}
@@ -1086,6 +1127,15 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   .c-card-img{height:280px}
   .carousel-outer{padding:0 18px}
 
+  /* program */
+  .program-sec{padding:56px 0}
+  .program-head{margin-bottom:36px}
+  .program-item{padding:18px 18px;gap:14px}
+  .program-icon{width:42px;height:42px;min-width:42px;font-size:19px}
+  .program-item p{font-size:15px}
+  .program-item p span{font-size:12px}
+  .program-item:hover{transform:translateX(-3px)}
+
   /* features */
   .feat-grid{grid-template-columns:1fr;gap:14px}
   .feat-grid .feat-row2{display:contents}
@@ -1179,6 +1229,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
   <div class="nav-links">
     <a href="#process">הליווי</a>
+    <a href="#program">התוכנית</a>
     <a href="#included">מה כולל</a>
     <a href="#about">אוריה</a>
     <a href="#faq">שאלות</a>
@@ -1194,6 +1245,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 <div class="mobile-nav" id="mobile-nav">
   <button class="mobile-close" id="mobile-close">✕</button>
   <a href="#process" class="mob-link">הליווי</a>
+  <a href="#program" class="mob-link">התוכנית</a>
   <a href="#included" class="mob-link">מה כולל</a>
   <a href="#about" class="mob-link">אוריה</a>
   <a href="#faq" class="mob-link">שאלות</a>
@@ -1319,6 +1371,51 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 
     <div style="text-align:center;margin-top:52px" class="reveal">
       <a href="#lead" class="btn btn-gold">אני רוצה להצטרף ←</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ████████████████████████████
+  PROGRAM
+████████████████████████████ -->
+<section id="program" class="sec program-sec">
+  <div class="wrap">
+    <div class="program-head reveal">
+      <span class="h-md" style="display:block;margin-bottom:4px">מה כוללת</span>
+      <h2 class="h-xl clip-reveal">התוכנית</h2>
+    </div>
+
+    <div class="program-container">
+      <div class="program-item reveal delay-1">
+        <div class="program-icon">💪</div>
+        <p>תוכנית אימונים מסודרת לחדר כושר<span>כוח וחיטוב – מותאמת אישית לרמה שלך</span></p>
+      </div>
+
+      <div class="program-item reveal delay-2">
+        <div class="program-icon">🥗</div>
+        <p>תפריט תזונה מותאם לירידה במשקל<span>מגוון, טעים ובר-ביצוע ליום יום</span></p>
+      </div>
+
+      <div class="program-item reveal delay-3">
+        <div class="program-icon">📊</div>
+        <p>חישוב קלוריות ומאקרו<span>חלבון, פחמימה, שומן – הכל מחושב בדיוק</span></p>
+      </div>
+
+      <div class="program-item reveal delay-4">
+        <div class="program-icon">📋</div>
+        <p>הנחיות ברורות – מה, כמה ואיך<span>בלי ניחושים, בלי בלבול – הכל מפורט</span></p>
+      </div>
+
+      <div class="program-item reveal delay-5">
+        <div class="program-icon">🌐</div>
+        <p>גישה אונליין מכל מקום<span>הכל דיגיטלי – נגיש לך 24/7</span></p>
+      </div>
+    </div>
+
+    <div class="program-cta reveal">
+      <a href="#lead" class="btn btn-gold">אני רוצה להתחיל ←</a>
     </div>
   </div>
 </section>
