@@ -124,6 +124,83 @@ button{cursor:pointer;font-family:inherit}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes lineReveal{from{transform:translateY(105%)}to{transform:translateY(0)}}
 @keyframes goldPulseText{0%,100%{text-shadow:0 0 20px rgba(245,166,35,0.2)}50%{text-shadow:0 0 40px rgba(245,166,35,0.55)}}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes auroraShift{0%{transform:translate(0,0) rotate(0deg) scale(1)}33%{transform:translate(30px,-20px) rotate(120deg) scale(1.1)}66%{transform:translate(-20px,15px) rotate(240deg) scale(0.95)}100%{transform:translate(0,0) rotate(360deg) scale(1)}}
+@keyframes borderGlow{0%,100%{border-color:rgba(245,166,35,0.4);box-shadow:0 0 20px rgba(245,166,35,0.05)}50%{border-color:rgba(245,166,35,0.8);box-shadow:0 0 30px rgba(245,166,35,0.15)}}
+@keyframes floatOrb{0%,100%{transform:translate(0,0)}25%{transform:translate(60px,-40px)}50%{transform:translate(-30px,-80px)}75%{transform:translate(-60px,20px)}}
+
+/* ── SHIMMER HEADINGS ── */
+.shimmer-text{
+  background:linear-gradient(120deg,var(--gold) 0%,#FFD700 25%,#fff 50%,#FFD700 75%,var(--gold) 100%);
+  background-size:400% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 6s ease-in-out infinite;
+}
+
+/* ── AURORA BACKGROUND LAYER ── */
+.aurora{position:relative;overflow:hidden}
+.aurora::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,166,35,0.12) 0%,rgba(232,97,45,0.06) 40%,transparent 70%);
+  top:-200px;right:-200px;
+  animation:auroraShift 20s ease-in-out infinite;
+  pointer-events:none;z-index:0;
+}
+.aurora::after{
+  content:'';position:absolute;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,97,45,0.10) 0%,rgba(245,166,35,0.04) 40%,transparent 70%);
+  bottom:-150px;left:-150px;
+  animation:auroraShift 25s ease-in-out infinite reverse;
+  pointer-events:none;z-index:0;
+}
+.aurora>*{position:relative;z-index:1}
+
+/* ── FLOATING ORBS ── */
+.orb{
+  position:absolute;border-radius:50%;pointer-events:none;
+  filter:blur(80px);opacity:0.4;z-index:0;
+}
+.orb-1{width:300px;height:300px;background:rgba(245,166,35,0.18);top:10%;right:-5%;animation:floatOrb 18s ease-in-out infinite}
+.orb-2{width:250px;height:250px;background:rgba(232,97,45,0.14);bottom:10%;left:-5%;animation:floatOrb 22s ease-in-out infinite reverse}
+.orb-3{width:200px;height:200px;background:rgba(255,215,0,0.10);top:50%;left:30%;animation:floatOrb 15s ease-in-out infinite 3s}
+
+/* ── WAVE DIVIDERS ── */
+.wave-divider{position:relative;height:80px;overflow:hidden;margin-top:-1px}
+.wave-divider svg{position:absolute;bottom:0;width:100%;height:100%}
+.wave-divider.flip{transform:scaleY(-1)}
+
+/* ── GLOWING CARDS ── */
+.glow-border{
+  animation:borderGlow 4s ease-in-out infinite;
+}
+.glow-border:hover{
+  border-color:var(--gold)!important;
+  box-shadow:0 0 40px rgba(245,166,35,0.2),var(--card-inset)!important;
+}
+
+/* ── SECTION ATMOSPHERE ── */
+.sec-mesh{
+  position:relative;overflow:hidden;
+}
+.sec-mesh::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(245,166,35,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(232,97,45,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,215,0,0.03) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* ── GRAIN TEXTURE OVERLAY ── */
+body::after{
+  content:'';position:fixed;inset:0;z-index:99990;pointer-events:none;
+  opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:128px;
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SCROLL REVEAL  –  BIDIRECTIONAL
@@ -177,10 +254,12 @@ button{cursor:pointer;font-family:inherit}
 .clip-reveal.in .word:nth-child(10) em{transition-delay:0.54s}
 /* ── MARQUEE STRIP ── */
 .marquee-strip{
-  overflow:hidden;background:rgba(245,166,35,0.08);
-  border-top:1px solid rgba(245,166,35,0.2);
-  border-bottom:1px solid rgba(245,166,35,0.2);
+  overflow:hidden;
+  background:linear-gradient(90deg,rgba(245,166,35,0.04),rgba(232,97,45,0.08),rgba(245,166,35,0.04));
+  border-top:1px solid rgba(245,166,35,0.3);
+  border-bottom:1px solid rgba(245,166,35,0.3);
   padding:14px 0;white-space:nowrap;
+  box-shadow:0 0 30px rgba(245,166,35,0.08);
 }
 .marquee-inner{
   display:inline-flex;gap:0;
@@ -232,16 +311,31 @@ button{cursor:pointer;font-family:inherit}
   padding:15px 40px;
   border:none;
   box-shadow:0 6px 20px var(--gold-glow);
+  position:relative;overflow:hidden;
 }
-.btn-gold:hover{filter:brightness(1.08);box-shadow:0 10px 32px rgba(245,166,35,0.5)}
+.btn-gold::before{
+  content:'';position:absolute;top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+  transition:none;animation:shimmer 3s ease-in-out infinite;
+}
+.btn-gold:hover{filter:brightness(1.12);box-shadow:0 10px 40px rgba(245,166,35,0.55);transform:scale(1.05)}
 
 .btn-outline{
   width:300px;height:52px;
   background:transparent;
   border:1.5px solid var(--gold);
   color:var(--text);font-size:17px;
+  position:relative;overflow:hidden;
+  transition:all 0.4s ease;
 }
-.btn-outline:hover{background:rgba(245,166,35,0.1)}
+.btn-outline::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(245,166,35,0.15),rgba(232,97,45,0.08));
+  opacity:0;transition:opacity 0.4s ease;
+}
+.btn-outline:hover::before{opacity:1}
+.btn-outline:hover{border-color:var(--gold);box-shadow:0 0 25px rgba(245,166,35,0.2);transform:scale(1.04)}
 
 .btn-wide{
   width:320px;height:52px;
@@ -278,7 +372,7 @@ button{cursor:pointer;font-family:inherit}
   display:flex;align-items:center;justify-content:space-between;
   transition:background var(--transition);
 }
-.navbar.scrolled{background:var(--nav-bg-s)}
+.navbar.scrolled{background:var(--nav-bg-s);border-bottom-color:rgba(245,166,35,0.35)}
 .nav-logo{display:flex;align-items:center}
 .nav-links{display:flex;gap:28px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--text-muted);transition:color var(--transition)}
@@ -390,22 +484,30 @@ button{cursor:pointer;font-family:inherit}
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    PROCESS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#process{background:var(--bg)}
+#process{background:var(--bg);position:relative;overflow:hidden}
 .process-head{text-align:center;margin-bottom:56px;display:flex;flex-direction:column;gap:6px}
 .process-intro{text-align:center;max-width:680px;margin:0 auto 56px;display:flex;flex-direction:column;gap:4px}
 
 .process-list{display:flex;flex-direction:column;gap:0;max-width:820px;margin:0 auto}
 .process-item{
   display:flex;gap:24px;align-items:flex-start;
-  padding:32px 0;border-bottom:1px solid rgba(245,166,35,0.2);
+  padding:32px 16px;border-bottom:1px solid rgba(245,166,35,0.15);
+  border-radius:12px;
+  transition:background 0.4s ease,transform 0.3s ease;
 }
+.process-item:hover{background:rgba(245,166,35,0.04);transform:translateX(-6px)}
 .process-item:last-child{border-bottom:none}
 .process-num{
   flex-shrink:0;width:52px;height:52px;border-radius:50%;
   background:linear-gradient(135deg,var(--gold),var(--orange));
   display:flex;align-items:center;justify-content:center;
   font-size:22px;font-weight:900;color:#000;
-  box-shadow:0 0 20px rgba(245,166,35,0.35);
+  box-shadow:0 0 20px rgba(245,166,35,0.35),0 0 40px rgba(245,166,35,0.15);
+  transition:box-shadow 0.3s ease,transform 0.3s ease;
+}
+.process-item:hover .process-num{
+  box-shadow:0 0 30px rgba(245,166,35,0.5),0 0 60px rgba(245,166,35,0.2);
+  transform:scale(1.1);
 }
 .process-body{flex:1}
 .process-title{font-size:20px;font-weight:700;color:var(--gold);margin-bottom:10px}
@@ -416,6 +518,7 @@ button{cursor:pointer;font-family:inherit}
 #results{
   background:var(--bg2);
   overflow:hidden;padding:90px 0;
+  position:relative;
 }
 .results-head{text-align:center;margin-bottom:48px}
 
@@ -533,7 +636,7 @@ button{cursor:pointer;font-family:inherit}
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    INCLUDED / FEATURES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#included{background:var(--bg)}
+#included{background:var(--bg);position:relative;overflow:hidden}
 .included-head{text-align:center;margin-bottom:56px}
 .feat-grid{
   display:grid;
@@ -549,11 +652,16 @@ button{cursor:pointer;font-family:inherit}
   min-height:210px;
   display:flex;flex-direction:column;gap:12px;
   background:var(--card-bg);
-  transition:transform var(--transition),box-shadow var(--transition);
+  transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);
+  animation:borderGlow 6s ease-in-out infinite;
 }
+.feat-card:nth-child(2){animation-delay:1s}
+.feat-card:nth-child(3){animation-delay:2s}
+.feat-card:nth-child(4){animation-delay:3s}
 .feat-card:hover{
-  transform:translateY(-5px);
-  box-shadow:rgba(245,166,35,0.2) 0 0 55px 18px inset, 0 12px 36px rgba(245,166,35,0.1);
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:rgba(245,166,35,0.25) 0 0 55px 18px inset, 0 16px 48px rgba(245,166,35,0.18);
+  border-color:var(--gold);
 }
 .feat-icon{
   position:absolute;top:14px;left:14px;
@@ -595,6 +703,11 @@ button{cursor:pointer;font-family:inherit}
 .program-item:hover{
   transform:translateX(-6px);
   box-shadow:rgba(245,166,35,0.2) 0 0 55px 18px inset, 0 8px 28px rgba(245,166,35,0.1);
+  border-color:rgba(245,166,35,0.8);
+}
+.program-item:hover .program-icon{
+  box-shadow:0 0 24px rgba(245,166,35,0.5),0 0 48px rgba(245,166,35,0.2);
+  transform:scale(1.1) rotate(5deg);
 }
 .program-icon{
   width:48px;height:48px;min-width:48px;
@@ -603,6 +716,7 @@ button{cursor:pointer;font-family:inherit}
   display:flex;align-items:center;justify-content:center;
   font-size:22px;
   box-shadow:0 0 16px rgba(245,166,35,0.35);
+  transition:box-shadow 0.3s ease,transform 0.3s ease;
 }
 .program-item p{
   font-size:17px;font-weight:600;line-height:1.5;
@@ -617,7 +731,7 @@ button{cursor:pointer;font-family:inherit}
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ABOUT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#about{background:var(--bg2)}
+#about{background:var(--bg2);position:relative;overflow:hidden}
 .about-wrap{display:flex;gap:72px;align-items:flex-start}
 .about-text{flex:1;min-width:0}
 .about-visual{
@@ -730,7 +844,7 @@ button{cursor:pointer;font-family:inherit}
   backdrop-filter:blur(6px);
   transition:transform var(--transition),box-shadow var(--transition);
 }
-.fit-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(245,166,35,0.12)}
+.fit-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 16px 48px rgba(245,166,35,0.18),0 0 0 1px var(--gold)}
 .fit-card-title{font-size:22px;font-weight:700;color:var(--gold);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(245,166,35,0.2)}
 .fit-list{list-style:none;display:flex;flex-direction:column;gap:15px}
 .fit-list li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55}
@@ -1317,7 +1431,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 
     <div class="hero-eyebrow">מאמנת כושר | סטודיו לאימוני נשים | אשקלון</div>
     <h1 class="hero-h1 clip-reveal">תקשיבי לי.</h1>
-    <h2 class="hero-h2 clip-reveal">כי מרגע זה את מפסיקה לבזבז זמן.</h2>
+    <h2 class="hero-h2 clip-reveal shimmer-text">כי מרגע זה את מפסיקה לבזבז זמן.</h2>
 
     <div class="hero-desc">
       <p class="body-txt">הבטן השטוחה, הישבן הדומיננטי והפרופורציות האקסטרה נשיות שאת מחפשת –</p>
@@ -1359,19 +1473,23 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </div>
 
-<!-- ████████████████████████████
-  DIVIDER
-████████████████████████████ -->
-<div class="divider-spacer"><div class="divider-gem"></div></div>
+<!-- WAVE DIVIDER -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="var(--bg)"/>
+  </svg>
+</div>
 
 <!-- ████████████████████████████
   PROCESS
 ████████████████████████████ -->
-<section id="process" class="sec">
+<section id="process" class="sec aurora">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
   <div class="wrap">
     <div class="process-head reveal">
       <span class="h-md">בואי נדבר ישר תכל׳ס:</span>
-      <h2 class="h-xl clip-reveal" style="margin-top:4px">מה קורה כשאת נכנסת לתהליך אצלי?</h2>
+      <h2 class="h-xl clip-reveal shimmer-text" style="margin-top:4px">מה קורה כשאת נכנסת לתהליך אצלי?</h2>
     </div>
 
     <div class="process-intro reveal delay-1">
@@ -1427,16 +1545,16 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg)"/></svg></div>
 
 <!-- ████████████████████████████
   PROGRAM
 ████████████████████████████ -->
-<section id="program" class="sec program-sec">
+<section id="program" class="sec program-sec sec-mesh">
   <div class="wrap">
     <div class="program-head reveal">
       <span class="h-md" style="display:block;margin-bottom:4px">מה כוללת</span>
-      <h2 class="h-xl clip-reveal">התוכנית</h2>
+      <h2 class="h-xl clip-reveal shimmer-text">התוכנית</h2>
     </div>
 
     <div class="program-container">
@@ -1472,15 +1590,15 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg2)"/></svg></div>
 
 <!-- ████████████████████████████
   RESULTS
 ████████████████████████████ -->
-<section id="results" class="sec">
+<section id="results" class="sec sec-mesh">
   <div class="wrap">
     <div class="results-head reveal">
-      <h2 class="h-xl clip-reveal">התוצאות מדברות בעד עצמן</h2>
+      <h2 class="h-xl clip-reveal shimmer-text">התוצאות מדברות בעד עצמן</h2>
     </div>
   </div>
 
@@ -1550,16 +1668,17 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg)"/></svg></div>
 
 <!-- ████████████████████████████
   INCLUDED
 ████████████████████████████ -->
-<section id="included" class="sec">
+<section id="included" class="sec aurora">
+  <div class="orb orb-3"></div>
   <div class="wrap">
     <div class="included-head reveal">
       <span class="h-md" style="display:block;margin-bottom:4px">מה כולל</span>
-      <h2 class="h-xl clip-reveal">הליווי שלנו?</h2>
+      <h2 class="h-xl clip-reveal shimmer-text">הליווי שלנו?</h2>
     </div>
 
     <div class="feat-grid">
@@ -1598,17 +1717,19 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg2)"/></svg></div>
 
 <!-- ████████████████████████████
   ABOUT
 ████████████████████████████ -->
-<section id="about" class="sec">
+<section id="about" class="sec sec-mesh">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
   <div class="wrap">
     <div class="about-wrap">
       <div class="about-text">
         <div class="reveal" style="margin-bottom:32px">
-          <h2 class="h-xl clip-reveal">ואם במקרה עוד לא הכרנו..</h2>
+          <h2 class="h-xl clip-reveal shimmer-text">ואם במקרה עוד לא הכרנו..</h2>
         </div>
 
         <div class="about-bio">
@@ -1676,15 +1797,16 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg)"/></svg></div>
 
 <!-- ████████████████████████████
   FIT / NOT FIT
 ████████████████████████████ -->
-<section id="fitment" class="sec">
+<section id="fitment" class="sec aurora">
+  <div class="orb orb-2"></div>
   <div class="wrap fit-wrap">
     <div class="fit-head reveal">
-      <h2 class="h-xl clip-reveal">הליווי שלנו – למי?</h2>
+      <h2 class="h-xl clip-reveal shimmer-text">הליווי שלנו – למי?</h2>
     </div>
 
     <div class="fit-cards">
@@ -1770,15 +1892,15 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg2)"/></svg></div>
 
 <!-- ████████████████████████████
   FAQ
 ████████████████████████████ -->
-<section id="faq" class="sec">
+<section id="faq" class="sec sec-mesh">
   <div class="wrap">
     <div class="faq-head reveal">
-      <h2 class="h-xl clip-reveal">שאלות שאולי עלו לך</h2>
+      <h2 class="h-xl clip-reveal shimmer-text">שאלות שאולי עלו לך</h2>
     </div>
 
     <div class="faq-inner">
@@ -1919,6 +2041,15 @@ const stickyBar= document.getElementById('sticky-bar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
   stickyBar.classList.toggle('show',  window.scrollY > 700);
+  /* parallax orbs */
+  const sy=window.scrollY;
+  document.querySelectorAll('.orb').forEach(o=>{
+    const r=o.parentElement.getBoundingClientRect();
+    if(r.top<window.innerHeight&&r.bottom>0){
+      const p=(r.top/window.innerHeight)*30;
+      o.style.transform='translateY('+p+'px)';
+    }
+  });
 }, {passive:true});
 
 /* ══════════════════════════════════════════
