@@ -76,7 +76,7 @@
   --v-thumb-bg: linear-gradient(145deg,#1a0e00,#2a1800);
 }
 [data-theme="dark"] .hero-bg{
-  background:radial-gradient(ellipse at 50% 40%, rgba(245,166,35,0.10) 0%, transparent 65%), #000000;
+  background:radial-gradient(ellipse at 50% 40%, rgba(245,166,35,0.10) 0%, transparent 65%), rgba(0,0,0,0.55);
 }
 [data-theme="dark"] .portrait-inner{background:linear-gradient(145deg,#1a0e00,#2a1800)}
 [data-theme="dark"] .spl-label{background:rgba(0,0,0,0.75)}
@@ -299,8 +299,8 @@ button{cursor:pointer;font-family:inherit}
 
 .hero-video{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;z-index:0;
-  opacity:0.25;
+  object-fit:contain;z-index:0;
+  opacity:0.35;
 }
 .hero-bg{
   position:absolute;inset:0;z-index:1;
