@@ -45,7 +45,7 @@
   --nav-bg: rgba(255,248,240,0.92);
   --nav-bg-s: rgba(255,248,240,0.98);
   --card-bg: rgba(255,255,255,0.6);
-  --fit-card-bg: rgba(255,255,255,0.75);
+  /* --fit-card-bg removed */
   --arrow-bg: rgba(255,255,255,0.85);
   --text-muted: rgba(26,10,0,0.55);
   --text-faint: rgba(26,10,0,0.50);
@@ -67,7 +67,7 @@
   --nav-bg: rgba(0,0,0,0.92);
   --nav-bg-s: rgba(0,0,0,0.98);
   --card-bg: rgba(255,255,255,0.05);
-  --fit-card-bg: rgba(255,255,255,0.05);
+  /* --fit-card-bg removed */
   --arrow-bg: rgba(30,20,0,0.85);
   --text-muted: rgba(255,255,255,0.55);
   --text-faint: rgba(255,255,255,0.50);
@@ -823,68 +823,102 @@ body::after{
 .pullquote p{font-size:19px;font-weight:600;color:var(--gold);font-style:italic;line-height:1.5}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   FIT / NOT FIT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#fitment{
-  background:var(--bg);
-  position:relative;overflow:hidden;
-}
-#fitment::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 25% 50%,rgba(245,166,35,0.10),transparent 60%),
-             radial-gradient(ellipse at 75% 50%,rgba(232,97,45,0.08),transparent 60%);
-}
-.fit-wrap{position:relative;z-index:1}
-.fit-head{text-align:center;margin-bottom:52px}
-.fit-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.fit-card{
-  border:var(--gold-border);border-radius:24px;
-  background:var(--fit-card-bg);
-  padding:36px 32px;
-  backdrop-filter:blur(6px);
-  transition:transform var(--transition),box-shadow var(--transition);
-}
-.fit-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 16px 48px rgba(245,166,35,0.18),0 0 0 1px var(--gold)}
-.fit-card-title{font-size:22px;font-weight:700;color:var(--gold);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(245,166,35,0.2)}
-.fit-list{list-style:none;display:flex;flex-direction:column;gap:15px}
-.fit-list li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55}
-.fit-list .ic{flex-shrink:0;font-size:17px;margin-top:2px}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    WHATSAPP REVIEWS GRID
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 #wa-reviews{background:var(--bg2);overflow:hidden}
 .wa-head{text-align:center;margin-bottom:52px}
 .wa-grid{
-  columns:3;column-gap:18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
   max-width:1100px;margin:0 auto;
 }
 .wa-card{
-  break-inside:avoid;margin-bottom:18px;
   border-radius:16px;overflow:hidden;
-  border:1.5px solid rgba(245,166,35,0.25);
+  border:1.5px solid rgba(245,166,35,0.18);
   background:var(--card-bg);
-  transition:transform var(--transition),border-color var(--transition),box-shadow var(--transition);
+  transition:transform 0.35s cubic-bezier(.4,0,.2,1),border-color 0.35s ease,box-shadow 0.35s ease;
   position:relative;
+  cursor:pointer;
+  aspect-ratio:1/1;
 }
 .wa-card:hover{
-  transform:translateY(-6px) scale(1.02);
+  transform:translateY(-8px) scale(1.04);
   border-color:var(--gold);
-  box-shadow:0 12px 40px rgba(245,166,35,0.15),0 0 0 1px rgba(245,166,35,0.3);
+  box-shadow:0 16px 48px rgba(245,166,35,0.22),0 0 0 1px rgba(245,166,35,0.4);
+  z-index:2;
 }
 .wa-card img{
-  width:100%;display:block;
-  border-radius:14px;
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.4s ease;
 }
+.wa-card:hover img{transform:scale(1.06)}
 .wa-card::after{
-  content:'';position:absolute;inset:0;
-  border-radius:14px;
-  background:linear-gradient(180deg,transparent 70%,rgba(245,166,35,0.06) 100%);
+  content:'\1F50D';position:absolute;
+  bottom:10px;left:10px;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(245,166,35,0.85);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;
+  opacity:0;transform:scale(0.7);
+  transition:opacity 0.3s ease,transform 0.3s ease;
   pointer-events:none;
 }
-@media(max-width:900px){.wa-grid{columns:2;column-gap:14px}}
-@media(max-width:520px){.wa-grid{columns:2;column-gap:10px}.wa-card{margin-bottom:10px;border-radius:12px}.wa-card img{border-radius:10px}}
+.wa-card:hover::after{opacity:1;transform:scale(1)}
+
+/* lightbox */
+.wa-lightbox{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.35s ease;
+}
+.wa-lightbox.active{opacity:1;pointer-events:all}
+.wa-lightbox img{
+  max-width:92vw;max-height:88vh;
+  border-radius:16px;
+  border:2px solid rgba(245,166,35,0.5);
+  box-shadow:0 0 80px rgba(245,166,35,0.2);
+  transform:scale(0.85);
+  transition:transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+.wa-lightbox.active img{transform:scale(1)}
+.wa-lb-close{
+  position:absolute;top:20px;right:24px;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(245,166,35,0.9);border:none;
+  color:#000;font-size:22px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:transform 0.2s ease,background 0.2s ease;
+}
+.wa-lb-close:hover{transform:scale(1.1);background:var(--gold)}
+.wa-lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(245,166,35,0.85);border:none;
+  color:#000;font-size:22px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:transform 0.2s ease,background 0.2s ease;
+}
+.wa-lb-nav:hover{transform:translateY(-50%) scale(1.1);background:var(--gold)}
+.wa-lb-prev{left:16px}
+.wa-lb-next{right:16px}
+.wa-lb-counter{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,0.7);font-size:14px;font-weight:500;
+}
+
+@media(max-width:900px){.wa-grid{grid-template-columns:repeat(3,1fr);gap:12px}}
+@media(max-width:520px){
+  .wa-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .wa-card{border-radius:12px}
+  .wa-lb-nav{width:38px;height:38px;font-size:18px}
+  .wa-lb-prev{left:8px}.wa-lb-next{right:8px}
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    VIDEO TESTIMONIALS
@@ -1353,13 +1387,6 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   .brand-nav.prev{left:8px}
   .brand-nav.next{right:8px}
 
-  /* fitment */
-  .fit-cards{grid-template-columns:1fr;gap:16px}
-  .fit-card{padding:24px 20px}
-  .fit-card-title{font-size:18px}
-  .fit-list li{font-size:15px}
-
-
   /* video carousel */
   .v-card{width:calc(75vw - 36px);max-width:280px}
   .v-thumb{height:340px}
@@ -1408,7 +1435,6 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   .c-card{width:calc(90vw - 28px)}
   .v-card{width:calc(82vw - 28px)}
   .process-num{width:38px;height:38px;font-size:16px}
-  .fit-card{padding:20px 16px}
 }
 </style>
 </head>
@@ -1832,43 +1858,7 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   </div>
 </section>
 
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg)"/></svg></div>
-
-<!-- ████████████████████████████
-  FIT / NOT FIT
-████████████████████████████ -->
-<section id="fitment" class="sec aurora">
-  <div class="orb orb-2"></div>
-  <div class="wrap fit-wrap">
-    <div class="fit-head reveal">
-      <h2 class="h-xl clip-reveal shimmer-text">הליווי שלנו – למי?</h2>
-    </div>
-
-    <div class="fit-cards">
-      <div class="fit-card reveal delay-1">
-        <div class="fit-card-title">✅ למי הליווי מתאים</div>
-        <ul class="fit-list">
-          <li><span class="ic" style="color:var(--gold)">✅</span><span>למי שבאה ללמוד, פתוחה ומוכנה לסגל הרגלים חדשים לשגרה</span></li>
-          <li><span class="ic" style="color:var(--gold)">✅</span><span>מתחילה? ותיקה? מתאמנת לבד? – זה מתאים לכולן</span></li>
-          <li><span class="ic" style="color:var(--gold)">✅</span><span>למי שנמאס לה לבזבז זמן ובאה ליישם מה שצריך</span></li>
-          <li><span class="ic" style="color:var(--gold)">✅</span><span>מי שלא מחפשת עוד דיאטה – אלא תהליך אמיתי ומדויק</span></li>
-          <li><span class="ic" style="color:var(--gold)">✅</span><span>למי שמוכנה לעבור מכשולים ולא להרים ידיים</span></li>
-        </ul>
-      </div>
-
-      <div class="fit-card reveal delay-2">
-        <div class="fit-card-title" style="color:var(--orange)">❌ ולמי הוא לא מתאים</div>
-        <ul class="fit-list">
-          <li><span class="ic" style="color:var(--orange)">❌</span><span>אם את חושבת שזה קל ולא תצטרכי להתאמץ</span></li>
-          <li><span class="ic" style="color:var(--orange)">❌</span><span>את מתעקשת לעשות אותם דברים ומצפה לתוצאה שונה</span></li>
-          <li><span class="ic" style="color:var(--orange)">❌</span><span>רוצה שינוי אבל לא מוכנה לפנות לו מקום בחיים</span></li>
-          <li><span class="ic" style="color:var(--orange)">❌</span><span>רגילה לוותר לעצמך ומצפה שלא יאתגרו אותך</span></li>
-          <li><span class="ic" style="color:var(--orange)">❌</span><span>לא מבינה שתהליך דורש גם סבלנות, לא רק רצון</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,20 C240,70 480,0 720,40 C960,80 1200,10 1440,30 L1440,80 L0,80Z" fill="var(--bg2)"/></svg></div>
 
 <!-- ████████████████████████████
   WHATSAPP REVIEWS
@@ -1895,6 +1885,15 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
     </div>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div class="wa-lightbox" id="wa-lightbox">
+  <button class="wa-lb-close" aria-label="סגור">&times;</button>
+  <button class="wa-lb-nav wa-lb-prev" aria-label="הקודם">❮</button>
+  <button class="wa-lb-nav wa-lb-next" aria-label="הבא">❯</button>
+  <img src="" alt="תגובת לקוחה">
+  <div class="wa-lb-counter"></div>
+</div>
 
 <div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,30 C360,70 720,0 1080,50 C1260,70 1380,20 1440,35 L1440,80 L0,80Z" fill="var(--bg)"/></svg></div>
 
@@ -2531,6 +2530,54 @@ document.querySelectorAll('.inspo-card').forEach(c => vidObs.observe(c));
     if(sx==null)return;
     const dx=e.changedTouches[0].clientX-sx;
     if(Math.abs(dx)>40){dx>0?go(cur-1):go(cur+1);reset()}
+    sx=null;
+  });
+})();
+
+/* ══════════════════════════════════════════
+   WHATSAPP REVIEWS LIGHTBOX
+══════════════════════════════════════════ */
+(function(){
+  const lb=document.getElementById('wa-lightbox');
+  if(!lb)return;
+  const lbImg=lb.querySelector('img');
+  const counter=lb.querySelector('.wa-lb-counter');
+  const cards=document.querySelectorAll('.wa-card');
+  const srcs=Array.from(cards).map(c=>c.querySelector('img').src);
+  let cur=0;
+
+  function show(i){
+    cur=(i+srcs.length)%srcs.length;
+    lbImg.src=srcs[cur];
+    counter.textContent=(cur+1)+' / '+srcs.length;
+    lb.classList.add('active');
+    document.body.style.overflow='hidden';
+  }
+  function hide(){
+    lb.classList.remove('active');
+    document.body.style.overflow='';
+  }
+
+  cards.forEach((c,i)=>c.addEventListener('click',()=>show(i)));
+  lb.querySelector('.wa-lb-close').addEventListener('click',hide);
+  lb.querySelector('.wa-lb-prev').addEventListener('click',()=>show(cur-1));
+  lb.querySelector('.wa-lb-next').addEventListener('click',()=>show(cur+1));
+  lb.addEventListener('click',e=>{if(e.target===lb)hide()});
+
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape')hide();
+    if(e.key==='ArrowLeft')show(cur+1);
+    if(e.key==='ArrowRight')show(cur-1);
+  });
+
+  /* swipe support */
+  let sx;
+  lb.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',e=>{
+    if(sx==null)return;
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){dx>0?show(cur-1):show(cur+1)}
     sx=null;
   });
 })();
