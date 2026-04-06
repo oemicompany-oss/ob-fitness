@@ -643,17 +643,40 @@ button{cursor:pointer;font-family:inherit}
   font-size:80px;
 }
 
-.brand-gallery{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-top:8px;
+.brand-showcase{
+  width:100%;margin-top:60px;position:relative;
+  display:flex;align-items:flex-end;gap:16px;
+  height:520px;overflow:visible;
 }
-.brand-gallery img{
-  width:100%;height:200px;object-fit:cover;border-radius:12px;
-  border:1px solid rgba(245,166,35,0.25);
-  transition:transform .3s ease,box-shadow .3s ease;
+.brand-card{
+  position:relative;flex:1;border-radius:16px;overflow:hidden;
+  transition:transform .5s cubic-bezier(.25,.46,.45,.94),box-shadow .5s ease,flex .5s cubic-bezier(.25,.46,.45,.94);
+  cursor:pointer;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
 }
-.brand-gallery img:hover{
-  transform:scale(1.03);
-  box-shadow:0 4px 20px rgba(245,166,35,0.2);
+.brand-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.6) 100%);
+  opacity:0;transition:opacity .4s ease;pointer-events:none;
+}
+.brand-card:hover::after{opacity:1}
+.brand-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.25,.46,.45,.94);
+}
+.brand-card:hover img{transform:scale(1.05)}
+.brand-card:hover{
+  transform:translateY(-12px);flex:1.4;
+  box-shadow:0 20px 60px rgba(245,166,35,0.2),0 8px 32px rgba(0,0,0,0.5);
+}
+.brand-card:nth-child(1){height:420px;border-radius:16px 16px 16px 40px}
+.brand-card:nth-child(2){height:520px;border-radius:40px 16px 16px 16px}
+.brand-card:nth-child(3){height:460px;border-radius:16px 40px 40px 16px}
+.brand-card:nth-child(4){height:380px;border-radius:16px 16px 40px 16px}
+.brand-card:nth-child(2)::before{
+  content:'';position:absolute;inset:-2px;border-radius:inherit;z-index:-1;
+  background:linear-gradient(160deg,var(--gold),var(--orange),transparent);
+  opacity:0.4;
 }
 
 .about-badge{
@@ -1167,8 +1190,12 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   .stats-row{gap:24px}
   .stat-num{font-size:34px}
   .about-badge{font-size:13px;padding:8px 20px}
-  .brand-gallery{gap:8px}
-  .brand-gallery img{height:160px}
+  .brand-showcase{height:320px;gap:8px;margin-top:36px}
+  .brand-card:nth-child(1){height:260px}
+  .brand-card:nth-child(2){height:320px}
+  .brand-card:nth-child(3){height:290px}
+  .brand-card:nth-child(4){height:240px}
+  .brand-card:hover{transform:translateY(-6px);flex:1.2}
 
   /* fitment */
   .fit-cards{grid-template-columns:1fr;gap:16px}
@@ -1617,12 +1644,21 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
           </div>
         </div>
 
-        <div class="brand-gallery reveal delay-3">
-          <img src="brand1.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
-          <img src="brand2.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
-          <img src="brand3.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
-          <img src="brand4.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
-        </div>
+      </div>
+    </div>
+
+    <div class="brand-showcase reveal">
+      <div class="brand-card">
+        <img src="brand1.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+      </div>
+      <div class="brand-card">
+        <img src="brand2.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+      </div>
+      <div class="brand-card">
+        <img src="brand3.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+      </div>
+      <div class="brand-card">
+        <img src="brand4.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
       </div>
     </div>
   </div>
