@@ -852,6 +852,41 @@ body::after{
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   WHATSAPP REVIEWS GRID
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#wa-reviews{background:var(--bg2);overflow:hidden}
+.wa-head{text-align:center;margin-bottom:52px}
+.wa-grid{
+  columns:3;column-gap:18px;
+  max-width:1100px;margin:0 auto;
+}
+.wa-card{
+  break-inside:avoid;margin-bottom:18px;
+  border-radius:16px;overflow:hidden;
+  border:1.5px solid rgba(245,166,35,0.25);
+  background:var(--card-bg);
+  transition:transform var(--transition),border-color var(--transition),box-shadow var(--transition);
+  position:relative;
+}
+.wa-card:hover{
+  transform:translateY(-6px) scale(1.02);
+  border-color:var(--gold);
+  box-shadow:0 12px 40px rgba(245,166,35,0.15),0 0 0 1px rgba(245,166,35,0.3);
+}
+.wa-card img{
+  width:100%;display:block;
+  border-radius:14px;
+}
+.wa-card::after{
+  content:'';position:absolute;inset:0;
+  border-radius:14px;
+  background:linear-gradient(180deg,transparent 70%,rgba(245,166,35,0.06) 100%);
+  pointer-events:none;
+}
+@media(max-width:900px){.wa-grid{columns:2;column-gap:14px}}
+@media(max-width:520px){.wa-grid{columns:2;column-gap:10px}.wa-card{margin-bottom:10px;border-radius:12px}.wa-card img{border-radius:10px}}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    VIDEO TESTIMONIALS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 #testimonials{background:var(--bg);overflow:hidden}
@@ -1834,6 +1869,34 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
     </div>
   </div>
 </section>
+
+<!-- ████████████████████████████
+  WHATSAPP REVIEWS
+████████████████████████████ -->
+<section id="wa-reviews" class="sec sec-mesh">
+  <div class="wrap">
+    <div class="wa-head reveal">
+      <h2 class="h-xl clip-reveal shimmer-text">מה אומרות עלינו?</h2>
+      <p style="font-size:18px;font-weight:300;margin-top:12px;color:var(--text-muted)">תגובות אמיתיות מוואטסאפ, בלי פילטרים</p>
+    </div>
+    <div class="wa-grid">
+      <div class="wa-card reveal"><img src="Reviews/WhatsApp Image 2026-04-05 at 20.50.10.jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-1"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.13.jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-2"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.14.jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-3"><img src="Reviews/WhatsApp Image 2026-04-05 at 20.50.10 (1).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.14 (1).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-1"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.14 (2).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-2"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.14 (3).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-3"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.15.jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.15 (1).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-1"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.15 (2).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-2"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.15 (3).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+      <div class="wa-card reveal delay-3"><img src="Reviews/WhatsApp Image 2026-04-05 at 21.24.15 (4).jpeg" alt="תגובת לקוחה" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,30 C360,70 720,0 1080,50 C1260,70 1380,20 1440,35 L1440,80 L0,80Z" fill="var(--bg)"/></svg></div>
 
 <!-- ████████████████████████████
   LEAD FORM
