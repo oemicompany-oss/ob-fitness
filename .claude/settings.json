@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv brand1.jpeg brand2.jpeg brand3.jpeg brand4.jpeg assets/images/brand/)",
+      "Bash(mv ba*.PNG ba*.jpeg assets/images/results/)",
+      "Bash(mv \"Reviews/\"* assets/images/reviews/)",
+      "Bash(rmdir Reviews)",
+      "Bash(mv logo.png profile.PNG assets/images/)",
+      "Bash(mv video1.mp4 video2.mp4 video3.mp4 assets/videos/)",
+      "Bash(mv pdf_page_1.png assets/images/)"
+    ]
+  }
+}
