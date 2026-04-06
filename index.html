@@ -643,6 +643,19 @@ button{cursor:pointer;font-family:inherit}
   font-size:80px;
 }
 
+.brand-gallery{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-top:8px;
+}
+.brand-gallery img{
+  width:100%;height:200px;object-fit:cover;border-radius:12px;
+  border:1px solid rgba(245,166,35,0.25);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.brand-gallery img:hover{
+  transform:scale(1.03);
+  box-shadow:0 4px 20px rgba(245,166,35,0.2);
+}
+
 .about-badge{
   background:linear-gradient(135deg,rgba(245,166,35,0.12),rgba(232,97,45,0.1));
   border:var(--gold-border);
@@ -1154,6 +1167,8 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   .stats-row{gap:24px}
   .stat-num{font-size:34px}
   .about-badge{font-size:13px;padding:8px 20px}
+  .brand-gallery{gap:8px}
+  .brand-gallery img{height:160px}
 
   /* fitment */
   .fit-cards{grid-template-columns:1fr;gap:16px}
@@ -1600,6 +1615,13 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
             <div class="stat-num">98%</div>
             <div class="stat-label">שביעות רצון</div>
           </div>
+        </div>
+
+        <div class="brand-gallery reveal delay-3">
+          <img src="brand1.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+          <img src="brand2.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+          <img src="brand3.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+          <img src="brand4.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
         </div>
       </div>
     </div>
