@@ -648,43 +648,44 @@ button{cursor:pointer;font-family:inherit}
   font-size:80px;
 }
 
-.brand-showcase{
-  width:100%;margin-top:60px;position:relative;
-  display:flex;align-items:flex-end;gap:16px;
-  height:520px;overflow:visible;
+/* ── brand carousel ── */
+.brand-carousel{
+  width:100%;margin-top:60px;position:relative;overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 8px 40px rgba(0,0,0,0.5);
 }
-.brand-card{
-  position:relative;flex:1;border-radius:16px;overflow:hidden;
-  transition:transform .5s cubic-bezier(.25,.46,.45,.94),box-shadow .5s ease,flex .5s cubic-bezier(.25,.46,.45,.94);
-  cursor:pointer;
-  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+.brand-track{
+  display:flex;
+  transition:transform 0.6s cubic-bezier(.25,.46,.45,.94);
 }
-.brand-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.6) 100%);
-  opacity:0;transition:opacity .4s ease;pointer-events:none;
+.brand-slide{
+  min-width:100%;position:relative;
 }
-.brand-card:hover::after{opacity:1}
-.brand-card img{
-  width:100%;height:100%;object-fit:cover;object-position:center top;
-  transition:transform .6s cubic-bezier(.25,.46,.45,.94);
+.brand-slide img{
+  width:100%;height:550px;object-fit:contain;
+  background:#0a0a0a;
 }
-.brand-card:hover img{transform:scale(1.05)}
-.brand-card:hover{
-  transform:translateY(-12px);flex:1.4;
-  box-shadow:0 20px 60px rgba(245,166,35,0.2),0 8px 32px rgba(0,0,0,0.5);
+.brand-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);
+  background:rgba(0,0,0,0.7);color:var(--gold);font-size:20px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:3;transition:all 0.3s ease;
+  backdrop-filter:blur(8px);
 }
-.brand-card:nth-child(1){height:420px;border-radius:16px 16px 16px 40px}
-.brand-card:nth-child(2){height:520px;border-radius:40px 16px 16px 16px}
-.brand-card:nth-child(2) img{object-position:center center}
-.brand-card:nth-child(3){height:460px;border-radius:16px 40px 40px 16px}
-.brand-card:nth-child(4){height:380px;border-radius:16px 16px 40px 16px}
-.brand-card:nth-child(4) img{object-position:center center}
-.brand-card:nth-child(2)::before{
-  content:'';position:absolute;inset:-2px;border-radius:inherit;z-index:-1;
-  background:linear-gradient(160deg,var(--gold),var(--orange),transparent);
-  opacity:0.4;
+.brand-nav:hover{background:var(--gold);color:#000}
+.brand-nav.prev{left:16px}
+.brand-nav.next{right:16px}
+.brand-dots{
+  display:flex;justify-content:center;gap:10px;
+  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:3;
 }
+.brand-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(255,255,255,0.35);border:1px solid rgba(245,166,35,0.4);
+  cursor:pointer;transition:all 0.3s ease;
+}
+.brand-dot.active{background:var(--gold);box-shadow:0 0 12px rgba(245,166,35,0.5)}
 
 .about-badge{
   background:linear-gradient(135deg,rgba(245,166,35,0.12),rgba(232,97,45,0.1));
@@ -1197,9 +1198,11 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
   .stats-row{gap:24px}
   .stat-num{font-size:34px}
   .about-badge{font-size:13px;padding:8px 20px}
-  .brand-showcase{height:auto;gap:12px;margin-top:36px;flex-wrap:wrap}
-  .brand-card{flex:1 1 calc(50% - 6px)!important;height:280px!important;border-radius:16px!important}
-  .brand-card:hover{transform:translateY(-4px);flex:1 1 calc(50% - 6px)!important}
+  .brand-carousel{margin-top:36px;border-radius:14px}
+  .brand-slide img{height:420px}
+  .brand-nav{width:36px;height:36px;font-size:16px}
+  .brand-nav.prev{left:8px}
+  .brand-nav.next{right:8px}
 
   /* fitment */
   .fit-cards{grid-template-columns:1fr;gap:16px}
@@ -1654,18 +1657,20 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
       </div>
     </div>
 
-    <div class="brand-showcase reveal">
-      <div class="brand-card">
-        <img src="brand1.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+    <div class="brand-carousel reveal">
+      <div class="brand-track">
+        <div class="brand-slide"><img src="brand1.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy"></div>
+        <div class="brand-slide"><img src="brand2.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy"></div>
+        <div class="brand-slide"><img src="brand3.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy"></div>
+        <div class="brand-slide"><img src="brand4.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy"></div>
       </div>
-      <div class="brand-card">
-        <img src="brand2.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
-      </div>
-      <div class="brand-card">
-        <img src="brand3.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
-      </div>
-      <div class="brand-card">
-        <img src="brand4.jpeg" alt="אוריה בוקובזה - תדמית" loading="lazy">
+      <button class="brand-nav prev" aria-label="הקודם">❮</button>
+      <button class="brand-nav next" aria-label="הבא">❯</button>
+      <div class="brand-dots">
+        <span class="brand-dot active"></span>
+        <span class="brand-dot"></span>
+        <span class="brand-dot"></span>
+        <span class="brand-dot"></span>
       </div>
     </div>
   </div>
@@ -2304,6 +2309,35 @@ document.querySelectorAll('.inspo-card').forEach(c => vidObs.observe(c));
   /* close panel on outside click */
   document.addEventListener('click', e => {
     if(!panel.contains(e.target) && e.target !== toggle) panel.classList.remove('open');
+  });
+})();
+
+/* ── brand carousel ── */
+(function(){
+  const track=document.querySelector('.brand-track');
+  if(!track)return;
+  const slides=track.querySelectorAll('.brand-slide');
+  const dots=document.querySelectorAll('.brand-dot');
+  const total=slides.length;
+  let cur=0,auto;
+  function go(i){
+    cur=(i+total)%total;
+    track.style.transform='translateX('+cur*100+'%)';
+    dots.forEach((d,j)=>d.classList.toggle('active',j===cur));
+  }
+  document.querySelector('.brand-nav.next').addEventListener('click',()=>{go(cur+1);reset()});
+  document.querySelector('.brand-nav.prev').addEventListener('click',()=>{go(cur-1);reset()});
+  dots.forEach((d,i)=>{d.addEventListener('click',()=>{go(i);reset()})});
+  function reset(){clearInterval(auto);auto=setInterval(()=>go(cur+1),4000)}
+  auto=setInterval(()=>go(cur+1),4000);
+  /* swipe */
+  let sx;
+  track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  track.addEventListener('touchend',e=>{
+    if(sx==null)return;
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){dx>0?go(cur-1):go(cur+1);reset()}
+    sx=null;
   });
 })();
 </script>
