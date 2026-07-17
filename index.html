@@ -2442,13 +2442,34 @@ document.querySelectorAll('.clip-reveal').forEach(el => {
 });
 
 /* ══════════════════════════════════════════
-   INSPO VIDEOS – click to toggle sound
+   INSPO VIDEOS – auto sound near viewport center,
+   click to override
 ══════════════════════════════════════════ */
-document.querySelectorAll('.inspo-card').forEach(card => {
+const inspoCards = [...document.querySelectorAll('.inspo-card')];
+
+function setCardSound(card, on){
+  const vid = card.querySelector('video');
+  if (!vid || vid.muted === !on) return;
+  vid.muted = !on;
+  card.classList.toggle('inspo-muted', !on);
+  if (on){
+    const p = vid.play();
+    /* browser blocked sound before first tap – fall back to muted */
+    if (p) p.catch(() => {
+      vid.muted = true;
+      card.classList.add('inspo-muted');
+      vid.play().catch(()=>{});
+    });
+  }
+}
+
+inspoCards.forEach(card => {
   const vid = card.querySelector('video');
   card.addEventListener('click', () => {
-    vid.muted = !vid.muted;
-    card.classList.toggle('inspo-muted', vid.muted);
+    const turnOn = vid.muted;
+    card.dataset.userMuted = turnOn ? '' : '1';
+    if (turnOn) inspoCards.forEach(c => { if (c !== card) setCardSound(c, false); });
+    setCardSound(card, turnOn);
   });
 });
 
@@ -2460,7 +2481,32 @@ const vidObs = new IntersectionObserver(entries => {
     e.isIntersecting ? vid.play() : vid.pause();
   });
 }, { threshold: 0.2 });
-document.querySelectorAll('.inspo-card').forEach(c => vidObs.observe(c));
+inspoCards.forEach(c => vidObs.observe(c));
+
+/* auto sound: unmute the card nearest the screen center while scrolling */
+let inspoSoundTick = false;
+function updateInspoSound(){
+  inspoSoundTick = false;
+  const vh = window.innerHeight;
+  let best = null, bestDist = Infinity;
+  inspoCards.forEach(card => {
+    const r = card.getBoundingClientRect();
+    const visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    if (visible < r.height * 0.6) return;
+    const dist = Math.abs((r.top + r.bottom) / 2 - vh / 2);
+    if (dist < bestDist){ bestDist = dist; best = card; }
+  });
+  inspoCards.forEach(card => {
+    setCardSound(card, card === best && !card.dataset.userMuted);
+  });
+}
+addEventListener('scroll', () => {
+  if (!inspoSoundTick){
+    inspoSoundTick = true;
+    requestAnimationFrame(updateInspoSound);
+  }
+}, { passive: true });
+updateInspoSound();
 
 /* ══════════════════════════════════════════
    SCROLL TO TOP
