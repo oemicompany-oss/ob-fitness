@@ -1739,12 +1739,10 @@ html.a11y-big .h-xl{font-size:clamp(28px,5vw,52px)!important}
 
       <div class="inspo-card inspo-muted reveal delay-2">
         <video src="assets/videos/video2.mp4" autoplay muted loop playsinline preload="none"></video>
-        <div class="inspo-sound"></div>
       </div>
 
       <div class="inspo-card inspo-muted reveal delay-3">
         <video src="assets/videos/video3.mp4" autoplay muted loop playsinline preload="none"></video>
-        <div class="inspo-sound"></div>
       </div>
 
     </div>
@@ -2445,7 +2443,8 @@ document.querySelectorAll('.clip-reveal').forEach(el => {
    INSPO VIDEOS – auto sound near viewport center,
    click to override
 ══════════════════════════════════════════ */
-const inspoCards = [...document.querySelectorAll('.inspo-card')];
+/* only cards with a sound button carry an audio track */
+const inspoCards = [...document.querySelectorAll('.inspo-card')].filter(c => c.querySelector('.inspo-sound'));
 
 function setCardSound(card, on){
   const vid = card.querySelector('video');
@@ -2481,7 +2480,7 @@ const vidObs = new IntersectionObserver(entries => {
     e.isIntersecting ? vid.play() : vid.pause();
   });
 }, { threshold: 0.2 });
-inspoCards.forEach(c => vidObs.observe(c));
+document.querySelectorAll('.inspo-card').forEach(c => vidObs.observe(c));
 
 /* auto sound: unmute the card nearest the screen center while scrolling */
 let inspoSoundTick = false;
